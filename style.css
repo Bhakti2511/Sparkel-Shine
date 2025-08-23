@@ -24,6 +24,7 @@ p,
   font-size: 16px;
   font-weight: 500;
   color: #fff;
+  padding :10px 0px;
 }
 i{
       font-size: 18px;
@@ -31,6 +32,25 @@ i{
 
 input::placeholder {
   color: #ffffff70;
+}
+
+.btn {
+  display: inline-block;
+  width: 80%;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 12px 20px;
+  align-self: center;
+  transition: background-color 0.3s;
+  background: #5326bd;
+  box-shadow: 0 4px 10px rgba(109, 74, 255, 0.4);
+
+  &:hover {
+    opacity: 0.9;
+  }
 }
 
 /* ---------- Logo Section ---------- */
@@ -49,24 +69,6 @@ input::placeholder {
 
   img {
     width: 223px;
-  }
-}
-
-
-.btn {
-  display: inline-block;
-  width: 80%;
-  color: white;
-  border: none;
-  font-size: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  padding: 12px 20px;
-  align-self: center;
-  transition: background-color 0.3s;
-
-  &:hover {
-    opacity: 0.9;
   }
 }
 
@@ -143,16 +145,6 @@ input::placeholder {
       }
     }
   }
-
-  .btn {
-    background-color: #007bff;
-    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
-    margin-top: 20px;
-
-    &:hover {
-      background-color: #0056b3;
-    }
-  }
 }
 
 /* ---------- Status 1 ---------- */
@@ -166,10 +158,11 @@ input::placeholder {
 
   .info {
     margin-top: 30px;
+    text-align: center;
+    justify-items: center;
 
     .mobile {
       display: flex;
-      justify-content: center;
       align-items: center;
       gap: 8px;
 
@@ -199,15 +192,99 @@ input::placeholder {
       }
     }
 
-    .btn {
-      background: #5326bd;
-      box-shadow: 0 4px 10px rgba(109, 74, 255, 0.4);
-    }
   }
 
   .support {
     margin-top: 60px;
     font-size: 1rem;
+  }
+}
+
+/* ---------- Status 2 ---------- */
+#status2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  height: 98vh;
+  align-self: center;
+
+  .logo {
+    margin-bottom: 0px;
+  }
+
+  .info {
+    margin-top: 30px;
+
+    .mobile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+
+      i {
+        color: red;
+        cursor: pointer;
+      }
+    }
+
+    p {
+      margin: 8px 0px;
+    }
+
+    .timer {
+      font-weight: bold;
+      margin: 8px 0;
+    }
+
+    .status {
+      margin-bottom: 20px;
+
+      span {
+        color: #1aa89e;
+      }
+    }
+
+    .btn {
+      background: #455065;
+      box-shadow: 0 4px 10px #455065;
+    }
+  }
+
+  .support {
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .del-btn {
+      color: white;
+      border: none;
+      width: 80%;
+      box-shadow: 0px 1px 4px 0px #455065;
+      background: #5326bd;
+      display: flex;
+      border-radius: 20px;
+      justify-content: space-between;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+
+      i {
+        background: #d02129;
+        padding: 12px 16px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+
+      span {
+        flex: 1;
+        text-align: center;
+      }
+    }
   }
 }
 
@@ -373,7 +450,12 @@ header {
     justify-self: start !important;
   }
 
+  /* .logo img {
+    width: 300px;
+  } */
+
   .btn {
+    /* font-size: 1.1rem; */
     padding: 14px 24px;
   }
 
@@ -387,8 +469,17 @@ header {
       height: 100%;
     }
 
+    /* .info {
+      p,
+      .status,
+      .timer {
+        font-size: 1.1rem;
+      }
+    } */
+
     .support {
       margin-top: 80px;
+      /* font-size: 1.05rem; */
     }
   }
 
@@ -410,11 +501,18 @@ header {
         img {
           height: 250px;
         }
+
+        p {
+          /* font-size: 1rem; */
+        }
       }
     }
   }
   .bottom-nav {
     justify-content: space-evenly;
+    /* i{
+      font-size: 25px;
+    } */
   }
 }
 
