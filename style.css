@@ -124,7 +124,7 @@ input::placeholder {
         cursor: pointer;
         gap: 10px;
         color: white;
-        margin-left:0px;
+        margin-left:-3px;
 
         i {
           font-size: 50px;
