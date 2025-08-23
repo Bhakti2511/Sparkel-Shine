@@ -123,8 +123,7 @@ input::placeholder {
         cursor: pointer;
         gap: 10px;
         color: white;
-        padding:0px !important;
-        margin:0px !important;
+        margin-left:0px ;
 
         i {
           font-size: 50px;
