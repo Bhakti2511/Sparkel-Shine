@@ -1,0 +1,488 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+/* ---------- Reset & Base ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+label,
+p,
+.text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+}
+i{
+      font-size: 18px;
+}
+
+input::placeholder {
+  color: #ffffff70;
+}
+
+/* ---------- Logo Section ---------- */
+.logo-bg {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0)),
+    url("bg-img.png") no-repeat center;
+  background-size: 500px 800px;
+  background-color: #000 !important;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 30px;
+  height: 20%;
+
+  img {
+    width: 223px;
+  }
+}
+
+
+.btn {
+  display: inline-block;
+  width: 80%;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 12px 20px;
+  align-self: center;
+  transition: background-color 0.3s;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+/* ---------- Common Container ---------- */
+.container {
+  width: 100%;
+  height: 100%;
+  max-width: 375px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* ---------- Login Section ---------- */
+#login {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 98vh;
+  width: 100%;
+
+  .sec-form {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    height: 60%;
+
+    .form-group {
+      position: relative;
+
+      label {
+        margin: 0px 0px 3px 15px;
+        display: block;
+        color: #fff;
+      }
+
+      input {
+        width: 100%;
+        padding: 8px 20px 8px 10px;
+        background: transparent;
+        border: 1px solid #ffffff50;
+        border-radius: 8px;
+        color: white;
+
+        &[type="file"] {
+          display: none;
+        }
+      }
+
+      .upload-label {
+        display: grid;
+        grid-template-rows: auto auto;
+        align-items: center;
+        place-content: center;
+        cursor: pointer;
+        gap: 10px;
+        color: white;
+
+        i {
+          font-size: 50px;
+          margin-bottom: 12px;
+          width: 100%;
+          height: 33px;
+          text-align: center;
+          position: unset !important;
+        }
+      }
+
+      i {
+        position: absolute;
+        right: 12px;
+        top: 0px;
+        color: #ffffff70;
+      }
+    }
+  }
+
+  .btn {
+    background-color: #007bff;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
+    margin-top: 20px;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+
+/* ---------- Status 1 ---------- */
+#status1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  height: 98vh;
+  align-self: center;
+
+  .info {
+    margin-top: 30px;
+
+    .mobile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+
+      i {
+        color: red;
+        cursor: pointer;
+      }
+    }
+
+    p {
+      margin: 8px 0px;
+    }
+
+    .timer {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 8px 0;
+    }
+
+    .status {
+      font-size: 1rem;
+      margin-bottom: 20px;
+
+      span {
+        color: #1aa89e;
+        font-weight: 600;
+      }
+    }
+
+    .btn {
+      background: #5326bd;
+      box-shadow: 0 4px 10px rgba(109, 74, 255, 0.4);
+    }
+  }
+
+  .support {
+    margin-top: 60px;
+    font-size: 1rem;
+  }
+}
+
+/* ---------- Category ---------- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 20px 20px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background: #000;
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+  i {
+    font-size: 1.5rem;
+  }
+  .right-icons i {
+        font-size: 1.2rem;
+        margin-right: 8px;
+        cursor: pointer;
+      }
+}
+
+#Category {
+  .new-arrivals {
+    background-color: #3a3a3a;
+    font-size: 26px;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 12px 0 20px 0;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+
+    .item {
+      background-color: #1a1a1a;
+      border-radius: 9px;
+      overflow: hidden;
+      position: relative;
+      text-align: center;
+      height: 160px;
+      padding-bottom: 8px;
+
+      img {
+        width: 100%;
+        height: 128px;
+        display: block;
+        object-fit: cover;
+        border-radius: 9px 9px 0 0;
+      }
+
+      p {
+        margin-top: 8px;
+      }
+
+      .share-icon {
+        position: absolute;
+        bottom: 38px;
+        width: 26px;
+        height: 26px;
+        right: 8px;
+        background: #3d3c3c87;
+        border-radius: 50%;
+        padding: 2px;
+        backdrop-filter: blur(5px);
+
+        i {
+          color: white;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 0;
+  border-top: 1px solid #222;
+
+  i {
+    color: white;
+    font-size: 1.2rem;
+  }
+}
+
+/* ---------- Common Icons ---------- */
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 24px;
+
+  i {
+    cursor: pointer;
+  }
+
+  .fa-whatsapp {
+    color: #25d366;
+  }
+
+  .fa-phone {
+    color: #4caf50;
+  }
+}
+
+.support a {
+  color: #1aa89e;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ---------- Media Queries ---------- */
+
+/* Samsung Mobile Fix */
+@media only screen and (width: 412px) {
+  .container {
+    margin-top: 0px;
+    height: 90vh;
+  }
+}
+
+/* Tablet: 401px - 768px */
+@media only screen and (min-width: 401px) and (max-width: 768px) {
+  label,
+  p,
+  button,
+  .text {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  i{
+      font-size: 25px;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 20px 30px;
+    margin: 0 auto;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+
+  #login .sec-form .form-group label {
+    justify-self: start !important;
+  }
+
+  .btn {
+    padding: 14px 24px;
+  }
+
+  .icons {
+    font-size: 30px;
+    gap: 30px;
+  }
+
+  #status1 {
+    .container {
+      height: 100%;
+    }
+
+    .support {
+      margin-top: 80px;
+    }
+  }
+
+  header {
+  h2{
+    font-size: 30px;
+  }
+}
+  #Category {
+    max-width: 100%;
+    height: 100%;
+
+    .grid {
+      gap: 20px;
+
+      .item {
+        height: 100%;
+
+        img {
+          height: 250px;
+        }
+      }
+    }
+  }
+  .bottom-nav {
+    justify-content: space-evenly;
+  }
+}
+
+@media only screen and (min-width: 420px) and (max-width: 768px) {
+  #status2 .logo img {
+    width: 260px;
+  }
+}
+
+/* Desktop ≥769px */
+@media only screen and (min-width: 769px) {
+  label,
+  p,
+  .text {
+    font-size: 25px !important;
+    font-weight: 500;
+  }
+
+  i{
+      font-size: 30px;
+    }
+
+  #login {
+    .sec-form {
+      .form-group label {
+        justify-self: start;
+      }
+    }
+  }
+
+  .container {
+    max-width: 90%;
+    padding: 40px;
+  }
+
+  .logo img {
+    width: 300px;
+  }
+
+  .btn {
+    margin-top: 50px;
+  }
+
+  #status2 .btn {
+    margin-top: 0px !important;
+  }
+
+  #Category {
+    max-width: 900px;
+
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+
+      .item {
+        height: 100%;
+
+        img {
+          height: 300px;
+        }
+
+        .share-icon {
+          bottom: 60px;
+        }
+      }
+    }
+  }
+
+  .bottom-nav {
+    justify-content: space-evenly;
+  }
+}
