@@ -59,6 +59,7 @@ input::placeholder {
     url("bg-img.png") no-repeat center;
   background-size: 500px 800px;
   background-color: #000 !important;
+  background-attachment:fixed;
 }
 
 .logo {
