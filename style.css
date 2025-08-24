@@ -196,6 +196,9 @@ input::placeholder {
   .support {
     margin-top: 60px;
     font-size: 1rem;
+    align-self: center;
+    display: grid;
+    gap: 20px;
   }
 }
 
