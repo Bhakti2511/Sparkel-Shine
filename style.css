@@ -158,8 +158,8 @@ input::placeholder {
 
   .info {
     margin-top: 30px;
-    text-align: center;
-    justify-items: anchor-center;
+    align-item:center;
+    justify-content: center;
 
     .mobile {
       display: flex;
