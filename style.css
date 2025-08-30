@@ -353,13 +353,15 @@ header {
       }
 
       .share-icon {
-           position: absolute;
-                bottom: 2px;
-                right: 8px;
-                background: #3d3c3c87;
-                border-radius: 50%;
-                padding: 5px 8px;
-                backdrop-filter: blur(5px);
+        position: absolute;
+        bottom: 38px;
+        /* width: 26px;
+        height: 26px; */
+        right: 8px;
+        background: #3d3c3c87;
+        border-radius: 50%;
+        padding: 5px 10px;
+        backdrop-filter: blur(5px);
 
         i {
           color: white;
