@@ -202,94 +202,6 @@ input::placeholder {
   }
 }
 
-/* ---------- Status 2 ---------- */
-#status2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: #fff;
-  height: 98vh;
-  align-self: center;
-
-  .logo {
-    margin-bottom: 0px;
-  }
-
-  .info {
-    margin-top: 30px;
-
-    .mobile {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-
-      i {
-        color: red;
-        cursor: pointer;
-      }
-    }
-
-    p {
-      margin: 8px 0px;
-    }
-
-    .timer {
-      font-weight: bold;
-      margin: 8px 0;
-    }
-
-    .status {
-      margin-bottom: 20px;
-
-      span {
-        color: #1aa89e;
-      }
-    }
-
-    .btn {
-      background: #455065;
-      box-shadow: 0 4px 10px #455065;
-    }
-  }
-
-  .support {
-    gap: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .del-btn {
-      color: white;
-      border: none;
-      width: 80%;
-      box-shadow: 0px 1px 4px 0px #455065;
-      background: #5326bd;
-      display: flex;
-      border-radius: 20px;
-      justify-content: space-between;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
-
-      i {
-        background: #d02129;
-        padding: 12px 16px;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-      }
-
-      span {
-        flex: 1;
-        text-align: center;
-      }
-    }
-  }
-}
-
 /* ---------- Category ---------- */
 header {
   display: flex;
@@ -355,12 +267,10 @@ header {
       .share-icon {
         position: absolute;
         bottom: 38px;
-        /* width: 26px;
-        height: 26px; */
         right: 8px;
         background: #3d3c3c87;
         border-radius: 50%;
-        padding: 5px 10px;
+        padding: 5px 8px;
         backdrop-filter: blur(5px);
 
         i {
