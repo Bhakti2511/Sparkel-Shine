@@ -4,12 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Details</title>
-        <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css" />
     <style>
+      .container {
+        scroll-snap-type: y mandatory !important;
+      }
 
+      .single-product{
+        scroll-snap-align: start !important;
+      }
       .product-title {
         font-size: 1rem;
         font-weight: bold;
@@ -55,8 +61,8 @@
         padding: 12px 0;
       }
       .related-products::-webkit-scrollbar {
-  display: none;
-}
+        display: none;
+      }
 
       .related-item {
         flex: 0 0 auto;
@@ -90,13 +96,33 @@
         background: #111;
         border-radius: 10px;
         padding: 10px;
-        margin: 20px 0;
       }
 
       .quantity {
         display: flex;
         align-items: center;
         gap: 10px;
+      }
+      .related-products {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 12px 0;
+      }
+      .related-products::-webkit-scrollbar {
+        display: none;
+      }
+
+      .related-item {
+        flex: 0 0 auto;
+        background-color: #111;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+        min-width: 80px;
+        font-size: 0.8rem;
+        border: 1px solid #222;
       }
 
       .related-item {
@@ -116,7 +142,8 @@
         margin-bottom: 6px;
       }
 
-      .quantity button {
+      .quantity #decrement,
+      #increment {
         background: #444;
         color: white;
         border: none;
@@ -162,107 +189,234 @@
         .bottom-bar i {
           font-size: 1.4rem;
         } */
-        
+
         /* Mobile-first default: stack vertically */
-  .product-container {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: space-between;
-  }
+        .product-container {
+          display: flex;
+          gap: 20px;
+          align-items: center;
+          justify-content: space-between;
+        }
 
-  .product-container > div:first-of-type {
-    flex: 0 0 60%;
-  }
+        .product-container > div:first-of-type {
+          flex: 0 0 60%;
+        }
 
-  .product-container > div:last-of-type {
-    flex: 0 0 38%;
-    font-size: 1rem;
-    text-align: left;
-    color: #ccc;
-    display: flex;
-    align-items: center;
-  }
+        .product-container > div:last-of-type {
+          flex: 0 0 38%;
+          font-size: 1rem;
+          text-align: left;
+          color: #ccc;
+          display: flex;
+          align-items: center;
+        }
 
-  .product-img {
-    width: 100%;
-    height: auto;
-  }
-}
+        .product-img {
+          width: 100%;
+          height: auto;
+        }
+      }
     </style>
   </head>
   <body>
+    <!-- Header -->
 
-      <!-- Header -->
-
-          <header>
-                    <i class="fa-thin fa-arrow-left"></i>
+    <header>
+      <i class="fa-thin fa-arrow-left"></i>
       <h2>Category</h2>
-      <i class="fa-thin fa-bars "></i>
+      <i class="fa-thin fa-bars"></i>
     </header>
 
-        <div class="container">
-      <!-- Product Image -->
-      <div style="position: relative">
-        <img
-          src="product-list-img/img10.png"
-          alt="Product"
-          class="product-img" />
-        <div class="side-icons">
-          <i class="fa-thin fa-share-alt"></i>
-          <i class="fa-thin fa-chevron-up"></i>
-          <i class="fathin fa-chevron-down"></i>
+    <!-- Product Image -->
+    <div class="container">
+      <div class="single-product">
+        <div style="position: relative">
+          <img
+            src="product-list-img/img10.png"
+            alt="Product"
+            class="product-img" />
+          <div class="side-icons">
+            <i class="fa-thin fa-share-alt"></i>
+            <i class="fa-thin fa-chevron-up"></i>
+            <i class="fathin fa-chevron-down"></i>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="description">Description</div>
+
+        <!-- Related Products -->
+        <div class="related-products" id="relatedSlider">
+          <i class="fa-thin fa-chevron-left" id="leftArrow"></i>
+
+          <div class="related-item">
+            <img src="product-list-img/img11.png" alt="Red2-10" />
+            <div>Red2-10</div>
+          </div>
+
+          <div class="related-item">
+            <img src="product-list-img/img12.png" alt="Red2-10" />
+            <div>Red2-10</div>
+          </div>
+
+          <div class="related-item">
+            <img src="product-list-img/img13.png" alt="Red2-10" />
+            <div>Red2-10</div>
+          </div>
+
+          <div class="related-item">
+            <img src="product-list-img/img14.png" alt="Red2-10" />
+            <div>Red2-10</div>
+          </div>
+
+          <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
+        </div>
+
+        <!-- Price Section -->
+        <div class="price-section">
+          <div>
+            <div class="old-price">₹5.00 / pair</div>
+            <div>₹240.00 / pair</div>
+          </div>
+          <div class="quantity">
+            <button id="decrement">-</button>
+            <span id="quantity">0</span>
+            <button id="increment">+</button>
+          </div>
+          <div>12 Pair / box</div>
+        </div>
+
+        <!-- Order Controls -->
+        <div class="order-controls" style="margin-bottom: 40px">
+          <div>Order Qty: 50</div>
+          <div>Stock: 15 / 369</div>
         </div>
       </div>
-
-      <!-- Description -->
-      <div class="description">Description</div>
-
-      <!-- Related Products -->
-      <div class="related-products">
-        <i class="fa-thin fa-chevron-left"></i>
-
-        <div class="related-item">
-          <img src="product-list-img/img11.png" alt="Red2-10" />
-          <div>Red2-10</div>
+      <div class="single-product">
+        <div style="position: relative">
+          <img
+            src="product-list-img/img10.png"
+            alt="Product"
+            class="product-img" />
+          <div class="side-icons">
+            <i class="fa-thin fa-share-alt"></i>
+            <i class="fa-thin fa-chevron-up"></i>
+            <i class="fathin fa-chevron-down"></i>
+          </div>
         </div>
 
-        <div class="related-item">
-          <img src="product-list-img/img12.png" alt="Red2-10" />
-          <div>Red2-10</div>
+        <!-- Description -->
+        <div class="description">Description</div>
+
+        <!-- Related Products -->
+        <div class="related-products" id="relatedSlider">
+          <i class="fa-thin fa-chevron-left" id="leftArrow"></i>
+
+          <div class="related-item">
+            <img src="product-list-img/img11.png" alt="Red2-10" />
+            <div>Red2-10</div>
+          </div>
+
+          <div class="related-item">
+            <img src="product-list-img/img12.png" alt="Red2-10" />
+            <div>Red2-10</div>
+          </div>
+
+          <div class="related-item">
+            <img src="product-list-img/img13.png" alt="Red2-10" />
+            <div>Red2-10</div>
+          </div>
+
+          <div class="related-item">
+            <img src="product-list-img/img14.png" alt="Red2-10" />
+            <div>Red2-10</div>
+          </div>
+
+          <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
         </div>
 
-        <div class="related-item">
-          <img src="product-list-img/img13.png" alt="Red2-10" />
-          <div>Red2-10</div>
+        <!-- Price Section -->
+        <div class="price-section">
+          <div>
+            <div class="old-price">₹5.00 / pair</div>
+            <div>₹240.00 / pair</div>
+          </div>
+          <div class="quantity">
+            <button id="decrement">-</button>
+            <span id="quantity">0</span>
+            <button id="increment">+</button>
+          </div>
+          <div>12 Pair / box</div>
         </div>
 
-        <div class="related-item">
-          <img src="product-list-img/img14.png" alt="Red2-10" />
-          <div>Red2-10</div>
+        <!-- Order Controls -->
+        <div class="order-controls" style="margin-bottom: 40px">
+          <div>Order Qty: 50</div>
+          <div>Stock: 15 / 369</div>
         </div>
-
-        <i class="fa-thin fa-chevron-right"></i>
       </div>
-
-      <!-- Price Section -->
-      <div class="price-section">
-        <div>
-          <div class="old-price">₹5.00 / pair</div>
-          <div>₹240.00 / pair</div>
+      <div class="single-product">
+        <div style="position: relative">
+          <img
+            src="product-list-img/img10.png"
+            alt="Product"
+            class="product-img" />
+          <div class="side-icons">
+            <i class="fa-thin fa-share-alt"></i>
+            <i class="fa-thin fa-chevron-up"></i>
+            <i class="fathin fa-chevron-down"></i>
+          </div>
         </div>
-                <div class="quantity">
-          <button id="decrement">-</button>
-          <span id="quantity">0</span>
-          <button id="increment">+</button>
-        </div>
-        <div>12 Pair / box</div>
-      </div>
 
-      <!-- Order Controls -->
-      <div class="order-controls" style="margin-bottom: 40px;">
-        <div>Order Qty: 50</div>
-        <div>Stock: 15 / 369</div>
+        <!-- Description -->
+        <div class="description">Description</div>
+
+        <!-- Related Products -->
+        <div class="related-products" id="relatedSlider">
+          <i class="fa-thin fa-chevron-left" id="leftArrow"></i>
+
+          <div class="related-item">
+            <img src="product-list-img/img11.png" alt="Red2-10" />
+            <div>Red2-10</div>
+          </div>
+
+          <div class="related-item">
+            <img src="product-list-img/img12.png" alt="Red2-10" />
+            <div>Red2-10</div>
+          </div>
+
+          <div class="related-item">
+            <img src="product-list-img/img13.png" alt="Red2-10" />
+            <div>Red2-10</div>
+          </div>
+
+          <div class="related-item">
+            <img src="product-list-img/img14.png" alt="Red2-10" />
+            <div>Red2-10</div>
+          </div>
+
+          <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
+        </div>
+
+        <!-- Price Section -->
+        <div class="price-section">
+          <div>
+            <div class="old-price">₹5.00 / pair</div>
+            <div>₹240.00 / pair</div>
+          </div>
+          <div class="quantity">
+            <button id="decrement">-</button>
+            <span id="quantity">0</span>
+            <button id="increment">+</button>
+          </div>
+          <div>12 Pair / box</div>
+        </div>
+
+        <!-- Order Controls -->
+        <div class="order-controls" style="margin-bottom: 40px">
+          <div>Order Qty: 50</div>
+          <div>Stock: 15 / 369</div>
+        </div>
       </div>
     </div>
 
@@ -276,24 +430,38 @@
     </div>
 
     <script>
-  const incrementBtn = document.getElementById("increment");
-  const decrementBtn = document.getElementById("decrement");
-  const quantitySpan = document.getElementById("quantity");
+      const incrementBtn = document.getElementById("increment");
+      const decrementBtn = document.getElementById("decrement");
+      const quantitySpan = document.getElementById("quantity");
 
-  let count = 0;
+      let count = 0;
 
-  incrementBtn.addEventListener("click", () => {
-    count++;
-    quantitySpan.textContent = count;
-  });
+      incrementBtn.addEventListener("click", () => {
+        count++;
+        quantitySpan.textContent = count;
+      });
 
-  decrementBtn.addEventListener("click", () => {
-    if (count > 0) {
-      count--;
-      quantitySpan.textContent = count;
-    }
-  });
-</script>
+      decrementBtn.addEventListener("click", () => {
+        if (count > 0) {
+          count--;
+          quantitySpan.textContent = count;
+        }
+      });
 
+      const slider = document.getElementById("relatedSlider");
+      const leftArrow = document.getElementById("leftArrow");
+      const rightArrow = document.getElementById("rightArrow");
+      const items = slider.querySelectorAll(".related-item");
+
+      leftArrow.addEventListener("click", () => {
+        const lastItem = items[items.length - 1];
+        lastItem.scrollIntoView({ behavior: "smooth", inline: "center" });
+      });
+
+      rightArrow.addEventListener("click", () => {
+        const firstItem = items[0];
+        firstItem.scrollIntoView({ behavior: "smooth", inline: "center" });
+      });
+    </script>
   </body>
 </html>
