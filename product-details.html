@@ -10,12 +10,14 @@
       href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css" />
     <style>
       .container {
-        scroll-snap-type: y mandatory !important;
-          overflow-x: auto;
+        height:95vh;
+        scroll-snap-type: y mandatory;
+          overflow-y: auto;
       }
 
       .single-product{
-        scroll-snap-align: start !important;
+        scroll-snap-align: start;
+        border-bottom: 1px solid #222;
       }
       .product-title {
         font-size: 1rem;
@@ -59,6 +61,7 @@
         align-items: center;
         gap: 8px;
         overflow-x: auto;
+  scroll-snap-type: x mandatory;
         padding: 12px 0;
       }
       .related-products::-webkit-scrollbar {
@@ -67,6 +70,7 @@
 
       .related-item {
         flex: 0 0 auto;
+          scroll-snap-align: start; 
         background-color: #111;
         border-radius: 10px;
         padding: 10px;
