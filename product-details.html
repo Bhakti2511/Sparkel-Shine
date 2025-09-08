@@ -4,20 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Details</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style2.css" />
     <link
       rel="stylesheet"
       href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css" />
     <style>
       .container {
-        height:95vh;
         scroll-snap-type: y mandatory;
-          overflow-y: auto;
       }
 
-      .single-product{
+      .single-product {
         scroll-snap-align: start;
-        border-bottom: 1px solid #222;
       }
       .product-title {
         font-size: 1rem;
@@ -61,7 +58,6 @@
         align-items: center;
         gap: 8px;
         overflow-x: auto;
-  scroll-snap-type: x mandatory;
         padding: 12px 0;
       }
       .related-products::-webkit-scrollbar {
@@ -70,7 +66,6 @@
 
       .related-item {
         flex: 0 0 auto;
-          scroll-snap-align: start; 
         background-color: #111;
         border-radius: 10px;
         padding: 10px;
@@ -113,6 +108,7 @@
         align-items: center;
         gap: 8px;
         overflow-x: auto;
+        justify-content: space-between;
         padding: 12px 0;
       }
       .related-products::-webkit-scrollbar {
@@ -156,69 +152,48 @@
         border-radius: 6px;
         font-size: 1rem;
       }
+      .desktop-container {
+        display: none;
+      }
 
-      /* Tablet */
-      @media (min-width: 401px) and (max-width: 768px) {
+      /* 430px to 730px: subtle spacing tweaks for smaller screens */
+      @media (min-width: 430px) and (max-width: 730px) {
         .container {
-          max-width: 600px;
-        }
-
-        .related-item {
-          min-width: 100px;
-          font-size: 0.9rem;
+          padding: 12px;
+          margin: 0 auto;
         }
       }
 
-      /* Desktop */
-      @media (min-width: 769px) {
-        /* .container {
+      /* 731px and above: enhanced layout with more space and structure */
+      @media (min-width: 731px) {
+        .desktop-container {
+          display: block;
+        }
+        .container-desktop {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 24px;
           max-width: 1000px;
+          margin: 0 auto;
           padding: 20px;
         }
 
-        .related-products {
-          gap: 16px;
-          justify-content: center;
-        }
-
-        .related-item {
-          min-width: 120px;
-          font-size: 1rem;
-          padding: 12px;
-        }
-
-        .order-controls {
-          font-size: 1.1rem;
-        }
-
-        .bottom-bar i {
-          font-size: 1.4rem;
-        } */
-
-        /* Mobile-first default: stack vertically */
-        .product-container {
+        .left-column {
           display: flex;
+          flex-direction: column;
           gap: 20px;
-          align-items: center;
-          justify-content: space-between;
         }
 
-        .product-container > div:first-of-type {
-          flex: 0 0 60%;
-        }
-
-        .product-container > div:last-of-type {
-          flex: 0 0 38%;
-          font-size: 1rem;
-          text-align: left;
-          color: #ccc;
+        .right-column {
           display: flex;
-          align-items: center;
+          flex-direction: column;
+          gap: 20px;
+          justify-content: flex-start;
         }
 
-        .product-img {
-          width: 100%;
-          height: auto;
+        .bottom-nav {
+          justify-content: center;
+          gap: 24px;
         }
       }
     </style>
@@ -227,7 +202,7 @@
     <!-- Header -->
 
     <header>
-      <i class="fa-thin fa-arrow-left"></i>
+      <i class="fa-thin fa-arrow-left text"></i>
       <h2>Category</h2>
       <i class="fa-thin fa-bars"></i>
     </header>
@@ -243,12 +218,12 @@
           <div class="side-icons">
             <i class="fa-thin fa-share-alt"></i>
             <i class="fa-thin fa-chevron-up"></i>
-            <i class="fa-thin fa-chevron-down"></i>
+            <i class="fathin fa-chevron-down"></i>
           </div>
         </div>
 
         <!-- Description -->
-        <div class="description">Description</div>
+        <div class="description text">Description</div>
 
         <!-- Related Products -->
         <div class="related-products" id="relatedSlider">
@@ -256,22 +231,22 @@
 
           <div class="related-item">
             <img src="product-list-img/img11.png" alt="Red2-10" />
-            <div>Red2-10</div>
+            <div class="text">Red2-10</div>
           </div>
 
           <div class="related-item">
             <img src="product-list-img/img12.png" alt="Red2-10" />
-            <div>Red2-10</div>
+            <div class="text">Red2-10</div>
           </div>
 
           <div class="related-item">
             <img src="product-list-img/img13.png" alt="Red2-10" />
-            <div>Red2-10</div>
+            <div class="text">Red2-10</div>
           </div>
 
           <div class="related-item">
             <img src="product-list-img/img14.png" alt="Red2-10" />
-            <div>Red2-10</div>
+            <div class="text">Red2-10</div>
           </div>
 
           <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
@@ -280,23 +255,24 @@
         <!-- Price Section -->
         <div class="price-section">
           <div>
-            <div class="old-price">₹5.00 / pair</div>
-            <div>₹240.00 / pair</div>
+            <div class="old-price text">₹5.00 / pair</div>
+            <div class="text">₹240.00 / pair</div>
           </div>
           <div class="quantity">
             <button id="decrement">-</button>
             <span id="quantity">0</span>
             <button id="increment">+</button>
           </div>
-          <div>12 Pair / box</div>
+          <div class="text">12 Pair / box</div>
         </div>
 
         <!-- Order Controls -->
         <div class="order-controls" style="margin-bottom: 40px">
-          <div>Order Qty: 50</div>
-          <div>Stock: 15 / 369</div>
+          <div class="text">Order Qty: 50</div>
+          <div class="text">Stock: 15 / 369</div>
         </div>
       </div>
+
       <div class="single-product">
         <div style="position: relative">
           <img
@@ -306,12 +282,12 @@
           <div class="side-icons">
             <i class="fa-thin fa-share-alt"></i>
             <i class="fa-thin fa-chevron-up"></i>
-            <i class="fa-thin fa-chevron-down"></i>
+            <i class="fathin fa-chevron-down"></i>
           </div>
         </div>
 
         <!-- Description -->
-        <div class="description">Description</div>
+        <div class="description text">Description</div>
 
         <!-- Related Products -->
         <div class="related-products" id="relatedSlider">
@@ -319,22 +295,22 @@
 
           <div class="related-item">
             <img src="product-list-img/img11.png" alt="Red2-10" />
-            <div>Red2-10</div>
+            <div  class="text">Red2-10</div>
           </div>
 
           <div class="related-item">
             <img src="product-list-img/img12.png" alt="Red2-10" />
-            <div>Red2-10</div>
+            <div class="text">Red2-10</div>
           </div>
 
           <div class="related-item">
             <img src="product-list-img/img13.png" alt="Red2-10" />
-            <div>Red2-10</div>
+            <div class="text">Red2-10</div>
           </div>
 
           <div class="related-item">
             <img src="product-list-img/img14.png" alt="Red2-10" />
-            <div>Red2-10</div>
+            <div class="text">Red2-10</div>
           </div>
 
           <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
@@ -343,23 +319,24 @@
         <!-- Price Section -->
         <div class="price-section">
           <div>
-            <div class="old-price">₹5.00 / pair</div>
-            <div>₹240.00 / pair</div>
+            <div class="old-price text">₹5.00 / pair</div>
+            <div class="text">₹240.00 / pair</div>
           </div>
           <div class="quantity">
             <button id="decrement">-</button>
             <span id="quantity">0</span>
             <button id="increment">+</button>
           </div>
-          <div>12 Pair / box</div>
+          <div class="text">12 Pair / box</div>
         </div>
 
         <!-- Order Controls -->
         <div class="order-controls" style="margin-bottom: 40px">
-          <div>Order Qty: 50</div>
-          <div>Stock: 15 / 369</div>
+          <div class="text">Order Qty: 50</div>
+          <div class="text">Stock: 15 / 369</div>
         </div>
       </div>
+      
       <div class="single-product">
         <div style="position: relative">
           <img
@@ -369,12 +346,12 @@
           <div class="side-icons">
             <i class="fa-thin fa-share-alt"></i>
             <i class="fa-thin fa-chevron-up"></i>
-            <i class="fa-thin fa-chevron-down"></i>
+            <i class="fathin fa-chevron-down"></i>
           </div>
         </div>
 
         <!-- Description -->
-        <div class="description">Description</div>
+        <div class="description text">Description</div>
 
         <!-- Related Products -->
         <div class="related-products" id="relatedSlider">
@@ -382,22 +359,22 @@
 
           <div class="related-item">
             <img src="product-list-img/img11.png" alt="Red2-10" />
-            <div>Red2-10</div>
+            <div class="text">Red2-10</div>
           </div>
 
           <div class="related-item">
             <img src="product-list-img/img12.png" alt="Red2-10" />
-            <div>Red2-10</div>
+            <div class="text">Red2-10</div>
           </div>
 
           <div class="related-item">
             <img src="product-list-img/img13.png" alt="Red2-10" />
-            <div>Red2-10</div>
+            <div class="text">Red2-10</div>
           </div>
 
           <div class="related-item">
             <img src="product-list-img/img14.png" alt="Red2-10" />
-            <div>Red2-10</div>
+            <div class="text">Red2-10</div>
           </div>
 
           <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
@@ -406,21 +383,189 @@
         <!-- Price Section -->
         <div class="price-section">
           <div>
-            <div class="old-price">₹5.00 / pair</div>
-            <div>₹240.00 / pair</div>
+            <div class="old-price text">₹5.00 / pair</div>
+            <div class="text">₹240.00 / pair</div>
           </div>
           <div class="quantity">
             <button id="decrement">-</button>
             <span id="quantity">0</span>
             <button id="increment">+</button>
           </div>
-          <div>12 Pair / box</div>
+          <div class="text">12 Pair / box</div>
         </div>
 
         <!-- Order Controls -->
         <div class="order-controls" style="margin-bottom: 40px">
-          <div>Order Qty: 50</div>
-          <div>Stock: 15 / 369</div>
+          <div class="text">Order Qty: 50</div>
+          <div class="text">Stock: 15 / 369</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop Product img -->
+    <div class="desktop-container">
+      <div class="single-product">
+        <div class="container-desktop">
+          <!-- Left Column -->
+          <div class="left-column">
+            <img src="product-list-img/img10.png" class="product-img" />
+          </div>
+
+          <!-- Right Column -->
+          <div class="right-column">
+            <div class="description text">Description</div>
+            <div class="price-section">
+              <div>
+                <div class="old-price text">₹5.00 / pair</div>
+                <div class="text">₹240.00 / pair</div>
+              </div>
+              <div class="quantity">
+                <button id="decrement">-</button>
+                <span id="quantity">0</span>
+                <button id="increment">+</button>
+              </div>
+              <div class="text">12 Pair / box</div>
+            </div>
+            <div class="order-controls" style="margin-bottom: 40px">
+              <div class="text">Order Qty: 50</div>
+              <div class="text">Stock: 15 / 369</div>
+            </div>
+            <div class="related-products" id="relatedSlider">
+              <i class="fa-thin fa-chevron-left" id="leftArrow"></i>
+
+              <div class="related-item">
+                <img src="product-list-img/img11.png" alt="Red2-10" />
+                <div class="text">Red2-10</div>
+              </div>
+
+              <div class="related-item">
+                <img src="product-list-img/img12.png" alt="Red2-10" />
+                <div class="text">Red2-10</div>
+              </div>
+
+              <div class="related-item">
+                <img src="product-list-img/img13.png" alt="Red2-10" />
+                <div class="text">Red2-10</div>
+              </div>
+
+              <div class="related-item">
+                <img src="product-list-img/img14.png" alt="Red2-10" />
+                <div class="text">Red2-10</div>
+              </div>
+
+              <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="single-product">
+        <div class="container-desktop">
+          <!-- Left Column -->
+          <div class="left-column">
+            <img src="product-list-img/img10.png" class="product-img" />
+          </div>
+
+          <!-- Right Column -->
+          <div class="right-column">
+            <div class="description text">Description</div>
+            <div class="price-section">
+              <div>
+                <div class="old-price text">₹5.00 / pair</div>
+                <div class="text">₹240.00 / pair</div>
+              </div>
+              <div class="quantity">
+                <button id="decrement">-</button>
+                <span id="quantity">0</span>
+                <button id="increment">+</button>
+              </div>
+              <div class="text">12 Pair / box</div>
+            </div>
+            <div class="order-controls" style="margin-bottom: 40px">
+              <div class="text">Order Qty: 50</div>
+              <div class="text">Stock: 15 / 369</div>
+            </div>
+            <div class="related-products" id="relatedSlider">
+              <i class="fa-thin fa-chevron-left" id="leftArrow"></i>
+
+              <div class="related-item">
+                <img src="product-list-img/img11.png" alt="Red2-10" />
+                <div class="text">Red2-10</div>
+              </div>
+
+              <div class="related-item">
+                <img src="product-list-img/img12.png" alt="Red2-10" />
+                <div class="text">Red2-10</div>
+              </div>
+
+              <div class="related-item">
+                <img src="product-list-img/img13.png" alt="Red2-10" />
+                <div class="text">Red2-10</div>
+              </div>
+
+              <div class="related-item">
+                <img src="product-list-img/img14.png" alt="Red2-10" />
+                <div class="text">Red2-10</div>
+              </div>
+
+              <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="single-product">
+        <div class="container-desktop">
+          <!-- Left Column -->
+          <div class="left-column">
+            <img src="product-list-img/img10.png" class="product-img" />
+          </div>
+
+          <!-- Right Column -->
+          <div class="right-column">
+            <div class="description text">Description</div>
+            <div class="price-section">
+              <div>
+                <div class="old-price text">₹5.00 / pair</div>
+                <div class="text">₹240.00 / pair</div>
+              </div>
+              <div class="quantity">
+                <button id="decrement">-</button>
+                <span id="quantity">0</span>
+                <button id="increment">+</button>
+              </div>
+              <div class="text">12 Pair / box</div>
+            </div>
+            <div class="order-controls" style="margin-bottom: 40px">
+              <div class="text">Order Qty: 50</div>
+              <div class="text">Stock: 15 / 369</div>
+            </div>
+            <div class="related-products" id="relatedSlider">
+              <i class="fa-thin fa-chevron-left" id="leftArrow"></i>
+
+              <div class="related-item">
+                <img src="product-list-img/img11.png" alt="Red2-10" />
+                <div class="text">Red2-10</div>
+              </div>
+
+              <div class="related-item">
+                <img src="product-list-img/img12.png" alt="Red2-10" />
+                <div class="text">Red2-10</div>
+              </div>
+
+              <div class="related-item">
+                <img src="product-list-img/img13.png" alt="Red2-10" />
+                <div class="text">Red2-10</div>
+              </div>
+
+              <div class="related-item">
+                <img src="product-list-img/img14.png" alt="Red2-10" />
+                <div class="text">Red2-10</div>
+              </div>
+
+              <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
+            </div>
+          </div>
         </div>
       </div>
     </div>
