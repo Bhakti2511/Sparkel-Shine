@@ -15,7 +15,7 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
         overflow: scroll;
-        padding-bottom: 40px;
+        padding-bottom: auto;
         .product-card {
           background: #111;
           border-radius: 10px;
@@ -129,6 +129,10 @@
 
       /* Desktop */
       @media (min-width: 731px) {
+        .container{
+          max-width:900px !important;
+          margin-bottom: auto;
+        }
         .product-grid {
           grid-template-columns: repeat(3, 1fr);
           gap: 20px;
