@@ -37,6 +37,53 @@ input::placeholder {
   color: #ffffff70;
 }
 
+/* Header  */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 20px 20px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background: #000;
+  height:--header-height;
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+  i {
+    font-size: 1.5rem;
+  }
+  .right-icons i {
+        font-size: 1.2rem;
+        margin-right: 8px;
+        cursor: pointer;
+      }
+}
+
+/* Footer */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height:--footer-height;
+  background-color: #000;
+  display: flex;
+  gap: 50px;
+    justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  border-top: 1px solid #222;
+
+  i {
+    color: white;
+    font-size: 1.2rem;
+  }
+}
+
 .btn {
   display: inline-block;
   width: 80%;
@@ -209,30 +256,6 @@ input::placeholder {
 }
 
 /* ---------- Category ---------- */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 20px 20px 20px;
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-  background: #000;
-  h2 {
-    font-size: 1.2rem;
-    font-weight: 400;
-  }
-  i {
-    font-size: 1.5rem;
-  }
-  .right-icons i {
-        font-size: 1.2rem;
-        margin-right: 8px;
-        cursor: pointer;
-      }
-}
-
 #Category {
   .new-arrivals {
     background-color: #3a3a3a;
@@ -285,25 +308,6 @@ header {
         }
       }
     }
-  }
-}
-
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #000;
-  display: flex;
-  gap: 50px;
-    justify-content: center;
-  align-items: center;
-  padding: 15px 0;
-  border-top: 1px solid #222;
-
-  i {
-    color: white;
-    font-size: 1.2rem;
   }
 }
 
