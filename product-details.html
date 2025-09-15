@@ -9,7 +9,6 @@
       rel="stylesheet"
       href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css" />
     <style>
-
       .single-product {
         scroll-snap-align: start;
       }
@@ -50,26 +49,8 @@
         margin-top: 10px;
       }
 
-      .related-products {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        overflow-x: auto;
-        padding: 12px 0;
-      }
       .related-products::-webkit-scrollbar {
         display: none;
-      }
-
-      .related-item {
-        flex: 0 0 auto;
-        background-color: #111;
-        border-radius: 10px;
-        padding: 10px;
-        text-align: center;
-        min-width: 80px;
-        font-size: 0.8rem;
-        border: 1px solid #222;
       }
 
       .price-section {
@@ -100,46 +81,6 @@
         align-items: center;
         gap: 10px;
       }
-      .related-products {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        overflow-x: auto;
-        justify-content: space-between;
-        padding: 12px 0;
-      }
-      .related-products::-webkit-scrollbar {
-        display: none;
-      }
-
-      .related-item {
-        flex: 0 0 auto;
-        background-color: #111;
-        border-radius: 10px;
-        padding: 10px;
-        text-align: center;
-        min-width: 80px;
-        font-size: 0.8rem;
-        border: 1px solid #222;
-      }
-
-      .related-item {
-        flex: 0 0 auto;
-        background-color: #000000;
-        border-radius: 10px;
-        padding: 5px;
-        text-align: center;
-        border: 1px solid #222;
-      }
-
-      .related-item img {
-        width: 30px;
-        height: 30px;
-        object-fit: cover;
-        border-radius: 6px;
-        margin-bottom: 6px;
-      }
-
       .quantity #decrement,
       #increment {
         background: #444;
@@ -149,8 +90,61 @@
         border-radius: 6px;
         font-size: 1rem;
       }
+      .related-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+      }
+      .related-products {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        overflow-x: auto;
+        justify-content: space-between;
+        padding: 10px 10px;
+        scroll-behavior: smooth;
+      }
+      .related-products::-webkit-scrollbar {
+        display: none;
+      }
+
+      .related-item {
+        flex: 0 0 auto;
+        background-color: #000000;
+        border-radius: 10px;
+        padding: 5px;
+        text-align: center;
+        /* border: 1px solid #222; */
+      }
+
+      .related-item img {
+        height: 40px;
+        object-fit: cover;
+        border-radius: 6px;
+        margin-bottom: 6px;
+      }
       .desktop-container {
         display: none;
+      }
+
+      #leftArrow,
+      #rightArrow {
+        backdrop-filter: blur(5px);
+        border: 1px solid #444;
+        padding: 5px 8px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 5;
+      }
+
+      #leftArrow {
+        left: 0px;
+      }
+
+      #rightArrow {
+        right: 0px;
       }
 
       /* 430px to 730px: subtle spacing tweaks for smaller screens */
@@ -197,10 +191,9 @@
   </head>
   <body>
     <!-- Header -->
-
     <header>
       <i class="fa-thin fa-arrow-left text"></i>
-      <h2>Product Details</h2>
+      <h2>Product-details</h2>
       <i class="fa-thin fa-bars"></i>
     </header>
 
@@ -215,7 +208,7 @@
           <div class="side-icons">
             <i class="fa-thin fa-share-alt"></i>
             <i class="fa-thin fa-chevron-up"></i>
-            <i class="fa-thin fa-chevron-down"></i>
+            <i class="fathin fa-chevron-down"></i>
           </div>
         </div>
 
@@ -223,27 +216,38 @@
         <div class="description text">Description</div>
 
         <!-- Related Products -->
-        <div class="related-products" id="relatedSlider">
+        <div class="related-wrapper">
           <i class="fa-thin fa-chevron-left" id="leftArrow"></i>
 
-          <div class="related-item">
-            <img src="product-list-img/img11.png" alt="Red2-10" />
-            <div class="text">Red2-10</div>
-          </div>
-
-          <div class="related-item">
-            <img src="product-list-img/img12.png" alt="Red2-10" />
-            <div class="text">Red2-10</div>
-          </div>
-
-          <div class="related-item">
-            <img src="product-list-img/img13.png" alt="Red2-10" />
-            <div class="text">Red2-10</div>
-          </div>
-
-          <div class="related-item">
-            <img src="product-list-img/img14.png" alt="Red2-10" />
-            <div class="text">Red2-10</div>
+          <div class="related-products" id="relatedSlider">
+            <div class="related-item">
+              <img src="product-list-img/img11.png" alt="Red2-10" />
+              <div class="text">img 1</div>
+            </div>
+            <div class="related-item">
+              <img src="product-list-img/img12.png" alt="Red2-10" />
+              <div class="text">img 2</div>
+            </div>
+            <div class="related-item">
+              <img src="product-list-img/img13.png" alt="Red2-10" />
+              <div class="text">img 3</div>
+            </div>
+            <div class="related-item">
+              <img src="product-list-img/img14.png" alt="Red2-10" />
+              <div class="text">img 4</div>
+            </div>
+                <div class="related-item">
+              <img src="product-list-img/img5.png" alt="Red2-10" />
+              <div class="text">img 5</div>
+            </div>
+                <div class="related-item">
+              <img src="product-list-img/img6.png" alt="Red2-10" />
+              <div class="text">img 6</div>
+            </div>
+                <div class="related-item">
+              <img src="product-list-img/img1.png" alt="Red2-10" />
+              <div class="text">img 7</div>
+            </div>
           </div>
 
           <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
@@ -273,13 +277,13 @@
       <div class="single-product">
         <div style="position: relative">
           <img
-            src="product-list-img/img10.png"
+            src="product-list-img/img5.png"
             alt="Product"
             class="product-img" />
           <div class="side-icons">
             <i class="fa-thin fa-share-alt"></i>
             <i class="fa-thin fa-chevron-up"></i>
-            <i class="fa-thin fa-chevron-down"></i>
+            <i class="fathin fa-chevron-down"></i>
           </div>
         </div>
 
@@ -287,27 +291,26 @@
         <div class="description text">Description</div>
 
         <!-- Related Products -->
-        <div class="related-products" id="relatedSlider">
+        <div class="related-wrapper">
           <i class="fa-thin fa-chevron-left" id="leftArrow"></i>
 
-          <div class="related-item">
-            <img src="product-list-img/img11.png" alt="Red2-10" />
-            <div  class="text">Red2-10</div>
-          </div>
-
-          <div class="related-item">
-            <img src="product-list-img/img12.png" alt="Red2-10" />
-            <div class="text">Red2-10</div>
-          </div>
-
-          <div class="related-item">
-            <img src="product-list-img/img13.png" alt="Red2-10" />
-            <div class="text">Red2-10</div>
-          </div>
-
-          <div class="related-item">
-            <img src="product-list-img/img14.png" alt="Red2-10" />
-            <div class="text">Red2-10</div>
+          <div class="related-products" id="relatedSlider">
+            <div class="related-item">
+              <img src="product-list-img/img11.png" alt="Red2-10" />
+              <div class="text">img 1</div>
+            </div>
+            <div class="related-item">
+              <img src="product-list-img/img12.png" alt="Red2-10" />
+              <div class="text">img 2</div>
+            </div>
+            <div class="related-item">
+              <img src="product-list-img/img13.png" alt="Red2-10" />
+              <div class="text">img 3</div>
+            </div>
+            <div class="related-item">
+              <img src="product-list-img/img14.png" alt="Red2-10" />
+              <div class="text">img 4</div>
+            </div>
           </div>
 
           <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
@@ -333,17 +336,17 @@
           <div class="text">Stock: 15 / 369</div>
         </div>
       </div>
-      
+
       <div class="single-product">
         <div style="position: relative">
           <img
-            src="product-list-img/img10.png"
+            src="product-list-img/img6.png"
             alt="Product"
             class="product-img" />
           <div class="side-icons">
             <i class="fa-thin fa-share-alt"></i>
             <i class="fa-thin fa-chevron-up"></i>
-            <i class="fa-thin fa-chevron-down"></i>
+            <i class="fathin fa-chevron-down"></i>
           </div>
         </div>
 
@@ -351,27 +354,26 @@
         <div class="description text">Description</div>
 
         <!-- Related Products -->
-        <div class="related-products" id="relatedSlider">
+        <div class="related-wrapper">
           <i class="fa-thin fa-chevron-left" id="leftArrow"></i>
 
-          <div class="related-item">
-            <img src="product-list-img/img11.png" alt="Red2-10" />
-            <div class="text">Red2-10</div>
-          </div>
-
-          <div class="related-item">
-            <img src="product-list-img/img12.png" alt="Red2-10" />
-            <div class="text">Red2-10</div>
-          </div>
-
-          <div class="related-item">
-            <img src="product-list-img/img13.png" alt="Red2-10" />
-            <div class="text">Red2-10</div>
-          </div>
-
-          <div class="related-item">
-            <img src="product-list-img/img14.png" alt="Red2-10" />
-            <div class="text">Red2-10</div>
+          <div class="related-products" id="relatedSlider">
+            <div class="related-item">
+              <img src="product-list-img/img11.png" alt="Red2-10" />
+              <div class="text">img 1</div>
+            </div>
+            <div class="related-item">
+              <img src="product-list-img/img12.png" alt="Red2-10" />
+              <div class="text">img 2</div>
+            </div>
+            <div class="related-item">
+              <img src="product-list-img/img13.png" alt="Red2-10" />
+              <div class="text">img 3</div>
+            </div>
+            <div class="related-item">
+              <img src="product-list-img/img14.png" alt="Red2-10" />
+              <div class="text">img 4</div>
+            </div>
           </div>
 
           <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
@@ -432,22 +434,22 @@
 
               <div class="related-item">
                 <img src="product-list-img/img11.png" alt="Red2-10" />
-                <div class="text">Red2-10</div>
+                <div class="text">img 1</div>
               </div>
 
               <div class="related-item">
                 <img src="product-list-img/img12.png" alt="Red2-10" />
-                <div class="text">Red2-10</div>
+                <div class="text">img 2</div>
               </div>
 
               <div class="related-item">
                 <img src="product-list-img/img13.png" alt="Red2-10" />
-                <div class="text">Red2-10</div>
+                <div class="text">img 3</div>
               </div>
 
               <div class="related-item">
                 <img src="product-list-img/img14.png" alt="Red2-10" />
-                <div class="text">Red2-10</div>
+                <div class="text">img 4</div>
               </div>
 
               <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
@@ -486,23 +488,23 @@
               <i class="fa-thin fa-chevron-left" id="leftArrow"></i>
 
               <div class="related-item">
-                <img src="product-list-img/img11.png" alt="Red2-10" />
-                <div class="text">Red2-10</div>
+                <img src="product-list-img/img1.png" alt="Red2-10" />
+                <div class="text">img 1</div>
               </div>
 
               <div class="related-item">
-                <img src="product-list-img/img12.png" alt="Red2-10" />
-                <div class="text">Red2-10</div>
+                <img src="product-list-img/img2.png" alt="Red2-10" />
+                <div class="text">img 2</div>
               </div>
 
               <div class="related-item">
-                <img src="product-list-img/img13.png" alt="Red2-10" />
-                <div class="text">Red2-10</div>
+                <img src="product-list-img/img3.png" alt="Red2-10" />
+                <div class="text">img 3</div>
               </div>
 
               <div class="related-item">
-                <img src="product-list-img/img14.png" alt="Red2-10" />
-                <div class="text">Red2-10</div>
+                <img src="product-list-img/img4.png" alt="Red2-10" />
+                <div class="text">img 4</div>
               </div>
 
               <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
@@ -541,23 +543,23 @@
               <i class="fa-thin fa-chevron-left" id="leftArrow"></i>
 
               <div class="related-item">
-                <img src="product-list-img/img11.png" alt="Red2-10" />
-                <div class="text">Red2-10</div>
+                <img src="product-list-img/img7.png" alt="Red2-10" />
+                <div class="text">img 2</div>
               </div>
 
               <div class="related-item">
-                <img src="product-list-img/img12.png" alt="Red2-10" />
-                <div class="text">Red2-10</div>
+                <img src="product-list-img/img8.png" alt="Red2-10" />
+                <div class="text">img 3</div>
               </div>
 
               <div class="related-item">
-                <img src="product-list-img/img13.png" alt="Red2-10" />
-                <div class="text">Red2-10</div>
+                <img src="product-list-img/img9.png" alt="Red2-10" />
+                <div class="text">img 4</div>
               </div>
 
               <div class="related-item">
-                <img src="product-list-img/img14.png" alt="Red2-10" />
-                <div class="text">Red2-10</div>
+                <img src="product-list-img/img10.png" alt="Red2-10" />
+                <div class="text">img 5</div>
               </div>
 
               <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
@@ -598,16 +600,23 @@
       const slider = document.getElementById("relatedSlider");
       const leftArrow = document.getElementById("leftArrow");
       const rightArrow = document.getElementById("rightArrow");
-      const items = slider.querySelectorAll(".related-item");
+      const item = slider.querySelector(".related-item"); // any item to measure width
+
+      // Get single item width (including gap/margin)
+      const itemWidth = item.offsetWidth + 8; // 8px = gap between items
 
       leftArrow.addEventListener("click", () => {
-        const lastItem = items[items.length - 1];
-        lastItem.scrollIntoView({ behavior: "smooth", inline: "center" });
+        slider.scrollBy({
+          left: -itemWidth,
+          behavior: "smooth",
+        });
       });
 
       rightArrow.addEventListener("click", () => {
-        const firstItem = items[0];
-        firstItem.scrollIntoView({ behavior: "smooth", inline: "center" });
+        slider.scrollBy({
+          left: itemWidth,
+          behavior: "smooth",
+        });
       });
     </script>
   </body>
