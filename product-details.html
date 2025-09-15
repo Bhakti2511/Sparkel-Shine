@@ -627,26 +627,29 @@
       });
 
       const slider = document.getElementById("relatedSlider");
-      const leftArrow = document.getElementById("leftArrow");
-      const rightArrow = document.getElementById("rightArrow");
-      const item = slider.querySelector(".related-item"); // any item to measure width
+const items = slider.querySelectorAll(".related-item");
 
-      // Get single item width (including gap/margin)
-      const itemWidth = item.offsetWidth + 8; // 8px = gap between items
+let currentIndex = 0; // track which item is active
 
-      leftArrow.addEventListener("click", () => {
-        slider.scrollBy({
-          left: -itemWidth,
-          behavior: "smooth",
-        });
-      });
+function scrollToItem(index) {
+  if (index >= 0 && index < items.length) {
+    currentIndex = index;
+    items[currentIndex].scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest"
+    });
+  }
+}
 
-      rightArrow.addEventListener("click", () => {
-        slider.scrollBy({
-          left: itemWidth,
-          behavior: "smooth",
-        });
-      });
+document.getElementById("leftArrow").addEventListener("click", () => {
+  scrollToItem(currentIndex - 1);
+});
+
+document.getElementById("rightArrow").addEventListener("click", () => {
+  scrollToItem(currentIndex + 1);
+});
+
     </script>
   </body>
 </html>
