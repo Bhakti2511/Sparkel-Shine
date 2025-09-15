@@ -15,18 +15,19 @@
       p {
         font-size: 14px;
         font-weight: 300;
-        padding-bottom: 5px;
       }
       /* Cart Container */
+      .container{
+        padding:0px 0px 65px;
+      }
       .cart-container {
         justify-content: space-between;
-        height: fit-content;
+        height: 80vh;
         display: flex;
         flex-direction: column;
         .cart-item {
           display: flex;
           background: #111;
-          border-radius: 8px;
           margin-bottom: 12px;
           padding: 10px;
           align-items: flex-start;
@@ -34,7 +35,7 @@
           img {
             width: 70px;
             height: 70px;
-            object-fit: cover;
+            object-fit: contain;
             border-radius: 6px;
             margin-right: 10px;
           }
@@ -90,7 +91,6 @@
           }
 
           .qty {
-            font-size: 14px;
             align-content: center;
           }
         }
@@ -105,8 +105,22 @@
         }
       }
 
+      .cart-item-holder {
+        flex: 1;
+        overflow-y: auto;
+        scrollbar-width: none;
+        padding-bottom: 80px;
+      }
+
       .summary {
-        background: #000;
+        display: flex;
+        position: fixed;
+        bottom: 37px;
+        width: 100%;
+        gap: 2px;
+        background-color: #000000;
+        padding: 10px;
+        flex-direction: column;
 
         p {
           display: flex;
@@ -114,8 +128,7 @@
         }
 
         .total {
-          margin-top: 10px;
-          font-weight: 500;
+          font-weight: 600;
         }
 
         .place-order {
@@ -129,6 +142,7 @@
           cursor: pointer;
         }
       }
+
       /* Tablet */
       @media (min-width: 430px) and (max-width: 730px) {
         .cart-item img {
@@ -139,11 +153,9 @@
 
       /* Desktop */
       @media (min-width: 731px) {
-        .container{
-        width:fit-content;
-        }
         .cart-container {
           max-width: 800px;
+          margin: 0 auto;
         }
         .cart-item {
           padding: 16px;
@@ -171,7 +183,7 @@
       <div class="cart-container">
         <div class="cart-item-holder">
           <div class="cart-item">
-            <img src="product-list-img/img1.png" alt="Product 1" />
+            <img src="https://divineerp-bucket-1.s3.ap-south-1.amazonaws.com/480DA278-B428-426F-B550-F78D4A400495/Files/475136FF-A248-5D1D-BC4A-62C5A533A743.png" alt="Product 1" />
             <div class="cart-info">
               <div class="title text">B0009-2-6R</div>
               <div class="details text">12 pair / box</div>
@@ -216,8 +228,8 @@
             </div>
           </div>
 
-                    <div class="cart-item">
-            <img src="product-list-img/img2.png" alt="Product 2" />
+          <div class="cart-item">
+            <img src="product-list-img/img5.png" alt="Product 2" />
             <div class="cart-info">
               <div class="title text">B0009-2-6R</div>
               <div class="details text">12 pair / box</div>
@@ -239,8 +251,8 @@
             </div>
           </div>
 
-                    <div class="cart-item">
-            <img src="product-list-img/img2.png" alt="Product 2" />
+          <div class="cart-item">
+            <img src="product-list-img/img8.png" alt="Product 2" />
             <div class="cart-info">
               <div class="title text">B0009-2-6R</div>
               <div class="details text">12 pair / box</div>
@@ -262,8 +274,8 @@
             </div>
           </div>
 
-                    <div class="cart-item">
-            <img src="product-list-img/img2.png" alt="Product 2" />
+          <div class="cart-item">
+            <img src="product-list-img/img10.png" alt="Product 2" />
             <div class="cart-info">
               <div class="title text">B0009-2-6R</div>
               <div class="details text">12 pair / box</div>
@@ -284,7 +296,7 @@
               </div>
             </div>
           </div>
-          
+
           <div class="cart-item">
             <img src="product-list-img/img12.png" alt="Product 2" />
             <div class="cart-info">
