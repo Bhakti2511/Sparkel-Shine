@@ -7,8 +7,8 @@
   box-sizing: border-box;
 }
 :root {
-  --header-height: 0px;   
-  --footer-height: 40px;  
+  --header-height: 0px;
+  --footer-height: 40px;
 }
 
 body {
@@ -18,71 +18,22 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  color:#fff;
+  color: #fff;
 }
 
 label,
 p,
 .text {
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 300;
   color: #fff;
 }
-i{
-      font-size: 18px;
+i {
+  font-size: 18px;
 }
 
 input::placeholder {
   color: #ffffff70;
-}
-
-/* Header  */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-  background: #000;
-  height:var(--header-height); 
-  h2 {
-    font-size: 1.2rem;
-    font-weight: 400;
-  }
-  i {
-    font-size: 1.5rem;
-  }
-  .right-icons i {
-        font-size: 1.2rem;
-        margin-right: 8px;
-        cursor: pointer;
-      }
-}
-
-/* Footer */
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: var(--footer-height);
-  background-color: #000;
-  display: flex;
-  gap: 50px;
-    justify-content: center;
-  align-items: center;
-  padding: 15px 0;
-  border-top: 1px solid #222;
-  z-index: 10;
-
-  i {
-    color: white;
-    font-size: 1.2rem;
-  }
 }
 
 .btn {
@@ -123,17 +74,88 @@ header {
   }
 }
 
+/* Header  */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background: #000;
+  height: var(--header-height);
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+  i {
+    font-size: 1.5rem;
+  }
+  .right-icons i {
+    font-size: 1.2rem;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+}
+
+/* Footer */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--footer-height);
+  background-color: #000;
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  border-top: 1px solid #222;
+  z-index: 10;
+
+  i {
+    color: white;
+    font-size: 1.2rem;
+  }
+}
+
 /* ---------- Common Container ---------- */
 .container {
-  position: relative;
-  height: calc(100vh - (var(--header-height) + var(--footer-height)));
-  overflow-y: auto;
-  scroll-snap-type: y mandatory;
-  padding: 0 12px;
-    background: rgba(0, 0, 0, 0.7);
-    max-width: 375px;
-    width: 100%;
+  width: 100%;
+  height: 100%;
+  max-width: 375px;
   padding: 0px 20px 65px;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/* ---------- Common Icons ---------- */
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 24px;
+
+  i {
+    cursor: pointer;
+  }
+
+  .fa-whatsapp {
+    color: #25d366;
+  }
+
+  .fa-phone {
+    color: #4caf50;
+  }
+}
+
+.support a {
+  color: #1aa89e;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 /* ---------- Login Section ---------- */
@@ -180,7 +202,7 @@ header {
         cursor: pointer;
         gap: 10px;
         color: white;
-        margin-left:-3px;
+        margin-left: -3px;
 
         i {
           font-size: 50px;
@@ -213,7 +235,8 @@ header {
 
   .info {
     margin-top: 30px;
-    justify-items:center;
+    text-align: center;
+    justify-items: center;
 
     .mobile {
       display: flex;
@@ -244,7 +267,6 @@ header {
         font-weight: 600;
       }
     }
-
   }
 
   .support {
@@ -257,6 +279,7 @@ header {
 }
 
 /* ---------- Category ---------- */
+
 #Category {
   .new-arrivals {
     background-color: #3a3a3a;
@@ -269,22 +292,24 @@ header {
   }
 
   .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    column-count: 2; 
     gap: 16px;
 
     .item {
+      display: inline-block; 
+       width: 100%; 
+       margin-bottom: 16px;
       background-color: #1a1a1a;
       border-radius: 9px;
       overflow: hidden;
       position: relative;
       text-align: center;
-      height: 160px;
+      height: fit-content;
       padding-bottom: 8px;
 
       img {
         width: 100%;
-        height: 128px;
+        height: auto; 
         display: block;
         object-fit: cover;
         border-radius: 9px 9px 0 0;
@@ -297,10 +322,12 @@ header {
       .share-icon {
         position: absolute;
         bottom: 38px;
+        /* width: 26px;
+        height: 26px; */
         right: 8px;
         background: #3d3c3c87;
         border-radius: 50%;
-        padding: 5px 8px;
+        padding: 5px 10px;
         backdrop-filter: blur(5px);
 
         i {
@@ -336,7 +363,7 @@ header {
           position: relative;
 
           img {
-            height: 180px;
+            height: 200px;
           }
         }
 
@@ -350,7 +377,7 @@ header {
             flex: 1;
 
             img {
-              height: 85px;
+              height: 95px;
             }
           }
         }
@@ -368,7 +395,7 @@ header {
       img {
         width: 100%;
         border-radius: 12px;
-        object-fit: cover;
+        object-fit: fill;
         display: block;
       }
       .img-number {
@@ -381,33 +408,8 @@ header {
         border-radius: 10px;
         font-size: 27px;
       }
+    }
   }
-}
-
-/* ---------- Common Icons ---------- */
-.icons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  font-size: 24px;
-
-  i {
-    cursor: pointer;
-  }
-
-  .fa-whatsapp {
-    color: #25d366;
-  }
-
-  .fa-phone {
-    color: #4caf50;
-  }
-}
-
-.support a {
-  color: #1aa89e;
-  text-decoration: none;
-  font-weight: bold;
 }
 
 /* ---------- Media Queries ---------- */
@@ -426,8 +428,8 @@ header {
   p,
   button,
   .text {
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 300;
   }
 
   i {
@@ -436,7 +438,7 @@ header {
 
   .container {
     max-width: 600px;
-    padding:0px 20px;
+    padding: 32px 24px 120px;
     margin: 0 auto;
     border-radius: 16px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -636,4 +638,3 @@ header {
     }
   }
 }
-
