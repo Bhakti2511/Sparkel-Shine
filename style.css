@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 :root {
-  --header-height: 0px;
+  --header-height: 40px;
   --footer-height: 40px;
 }
 
