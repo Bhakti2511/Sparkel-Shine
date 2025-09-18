@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ledger</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css" />
+    <style>
+      .ledger-container {
+        padding: 0px;
+        width: 100%;
+        justify-content: space-between;
+        height: calc(100vh - var(--header-height) - var(--footer-height));
+        display: flex;
+        flex-direction: column;
+        .ledger-list {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+
+          .ledger-card {
+            background: #111;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .ledger-right {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-end;
+              gap: 6px;
+
+              .amount {
+                font-weight: 400;
+              }
+
+              .action-btn {
+                display: flex;
+                align-items: center;
+                gap: 4px;
+                padding: 4px 10px;
+                border: 1px solid #1e90ff;
+                border-radius: 20px;
+                background: transparent;
+                color: #1e90ff;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+        .balance-summary {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          background: #000;
+          color: #fff;
+          border-top: 1px solid #333;
+          border-bottom: 1px solid #333;
+          text-align: center;
+          margin-top: auto;
+          .balance-item {
+            padding: 10px;
+            border-right: 1px solid #333;
+            .value {
+              font-weight: 500;
+              margin-top: 5px;
+              .red {
+                color: #ff4444;
+              }
+            }
+          }
+          .balance-item:last-child {
+            border-right: none;
+          }
+        }
+      }
+
+      /* Ledger List */
+
+      /* Balance Summery */
+
+      /* Tablet */
+      @media (min-width: 430px) and (max-width: 730px) {
+        header h2 {
+          font-size: 1.2rem;
+        }
+        .ledger-card {
+          padding: 14px;
+        }
+        .ledger-right .action-btn {
+          font-size: 0.9rem;
+          padding: 6px 12px;
+        }
+      }
+
+      /* Desktop */
+      @media (min-width: 731px) {
+        .ledger-list {
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        header {
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        .bottom-nav {
+          max-width: 800px;
+          margin: 0 auto;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <i class="fa-thin fa-arrow-left text"></i>
+      <h2>Ledger</h2>
+      <i class="fa-thin fa-bars"></i>
+    </header>
+
+    <!-- Ledger List -->
+    <div class="ledger-container">
+      <div class="ledger-list">
+        <div class="ledger-card">
+          <div class="ledger-info">
+            <div class="date text">09-07-2025</div>
+            <div class="id text">SO / 123</div>
+          </div>
+          <div class="ledger-right">
+            <div class="amount text">₹ 240.00</div>
+            <button class="action-btn">
+              <i class="fa-thin fa-cart-shopping"></i> Add
+            </button>
+          </div>
+        </div>
+
+        <div class="ledger-card">
+          <div class="ledger-info">
+            <div class="date text">09-07-2025</div>
+            <div class="id text">SO / 123</div>
+          </div>
+          <div class="ledger-right">
+            <div class="amount text">₹ 240.00</div>
+            <button class="action-btn">
+              <i class="fa-thin fa-cart-shopping"></i> Add
+            </button>
+          </div>
+        </div>
+
+        <div class="ledger-card">
+          <div class="ledger-info">
+            <div class="date text">09-07-2025</div>
+            <div class="id text">SO / 123</div>
+          </div>
+          <div class="ledger-right">
+            <div class="amount text">₹ 240.00</div>
+            <button class="action-btn">
+              <i class="fa-thin fa-cart-shopping"></i> Add
+            </button>
+          </div>
+        </div>
+
+        <div class="ledger-card">
+          <div class="ledger-info">
+            <div class="date text">09-07-2025</div>
+            <div class="id text">SO / 123</div>
+          </div>
+          <div class="ledger-right">
+            <div class="amount text">₹ 240.00</div>
+            <button class="action-btn">
+              <i class="fa-thin fa-cart-shopping"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="balance-summary">
+        <div class="balance-item">
+          <p class="label">Opening Balance</p>
+          <p class="value">0.00</p>
+        </div>
+        <div class="balance-item closing">
+          <p class="label">Closing Balance</p>
+          <p class="value red">720.00 Dr</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <nav class="bottom-nav">
+      <i class="fa-thin fa-house"></i>
+      <i class="fa-thin fa-shopping-cart"></i>
+      <i class="fa-thin fa-video"></i>
+      <i class="fa-thin fa-share-alt"></i>
+      <i class="fa-thin fa-magnifying-glass"></i>
+    </nav>
+  </body>
+</html>
