@@ -34,21 +34,18 @@
               align-items: flex-end;
               gap: 6px;
 
-              .amount {
-                font-weight: 400;
+              .value {
+                margin-top: 5px;
               }
-
-              .action-btn {
+              .red {
+                  color: #ff4444;
+                }
+            }
+            .ledger-info{
                 display: flex;
-                align-items: center;
-                gap: 4px;
-                padding: 4px 10px;
-                border: 1px solid #1e90ff;
-                border-radius: 20px;
-                background: transparent;
-                color: #1e90ff;
-                cursor: pointer;
-              }
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 6px;
             }
           }
         }
@@ -67,20 +64,16 @@
             .value {
               font-weight: 500;
               margin-top: 5px;
-              .red {
-                color: #ff4444;
-              }
             }
+            .red {
+                color: #FF534B;
+              }
           }
           .balance-item:last-child {
             border-right: none;
           }
         }
       }
-
-      /* Ledger List */
-
-      /* Balance Summery */
 
       /* Tablet */
       @media (min-width: 430px) and (max-width: 730px) {
@@ -129,52 +122,44 @@
         <div class="ledger-card">
           <div class="ledger-info">
             <div class="date text">09-07-2025</div>
-            <div class="id text">SO / 123</div>
+            <div class="id text">Sales Estimate</div>
           </div>
           <div class="ledger-right">
-            <div class="amount text">₹ 240.00</div>
-            <button class="action-btn">
-              <i class="fa-thin fa-cart-shopping"></i> Add
-            </button>
+            <div class="value red">₹ 240.00</div>
+            <div class="id text">SE / 17</div>
           </div>
         </div>
 
         <div class="ledger-card">
           <div class="ledger-info">
             <div class="date text">09-07-2025</div>
-            <div class="id text">SO / 123</div>
+            <div class="id text">Sales Estimate</div>
           </div>
           <div class="ledger-right">
-            <div class="amount text">₹ 240.00</div>
-            <button class="action-btn">
-              <i class="fa-thin fa-cart-shopping"></i> Add
-            </button>
+            <div class="value red">₹ 240.00</div>
+            <div class="id text">SE / 17</div>
           </div>
         </div>
 
         <div class="ledger-card">
           <div class="ledger-info">
             <div class="date text">09-07-2025</div>
-            <div class="id text">SO / 123</div>
+            <div class="id text">Sales Estimate</div>
           </div>
           <div class="ledger-right">
-            <div class="amount text">₹ 240.00</div>
-            <button class="action-btn">
-              <i class="fa-thin fa-cart-shopping"></i> Add
-            </button>
+            <div class="value red">₹ 240.00</div>
+            <div class="id text">SE / 17</div>
           </div>
         </div>
 
         <div class="ledger-card">
           <div class="ledger-info">
             <div class="date text">09-07-2025</div>
-            <div class="id text">SO / 123</div>
+            <div class="id text">Sales Estimate</div>
           </div>
           <div class="ledger-right">
-            <div class="amount text">₹ 240.00</div>
-            <button class="action-btn">
-              <i class="fa-thin fa-cart-shopping"></i> Add
-            </button>
+            <div class="value red">₹ 240.00</div>
+            <div class="id text">SE / 17</div>
           </div>
         </div>
       </div>
