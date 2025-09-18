@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Details</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style2.css" />
     <link
       rel="stylesheet"
       href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css" />
@@ -18,141 +18,129 @@
         max-width: 375px;
         padding: 0px 0px 65px;
         background: rgba(0, 0, 0, 0.7);
-      }
-      .single-product {
-        height: calc(100vh - var(--header-height) - var(--footer-height));
-        display: flex;
-        flex-direction: column;
-        scroll-snap-align: start;
-        box-sizing: border-box;
+        .single-product {
+          height: calc(100vh - var(--header-height) - var(--footer-height));
+          display: flex;
+          flex-direction: column;
+          scroll-snap-align: start;
+          box-sizing: border-box;
+          .product-img {
+            width: 100%;
+            height: auto;
+            max-height: 50vh;
+            object-fit: contain;
+            border-radius: 8px;
+          }
+          .side-icons {
+            position: absolute;
+            right: 16px;
+            bottom: 0px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            i {
+              border: 1px solid #444;
+              padding: 10px;
+              border-radius: 50%;
+              backdrop-filter: blur(5px);
+            }
+          }
+          .product-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .description {
+              text-align: center;
+              color: #ccc;
+              margin-top: 10px;
+            }
+
+            .price-section {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 10px;
+              background-color: #111;
+              border-top: 1px solid #1a1a1a;
+              .old-price {
+                text-decoration: line-through;
+                color: red;
+                .quantity {
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                }
+                #decrement,
+                #increment {
+                  background: #444;
+                  color: white;
+                  border: none;
+                  padding: 6px 10px;
+                  border-radius: 6px;
+                }
+              }
+            }
+
+            .related-wrapper {
+              position: relative;
+              display: flex;
+              align-items: center;
+              overflow: hidden;
+              padding:0px 15px;
+              .related-products {
+                position: relative;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                justify-content: flex-start;
+                margin: 10px 15px;
+                scroll-behavior: smooth;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                .related-item {
+                  flex: 0 0 auto;
+                  background-color: #000000;
+                  border-radius: 10px;
+                  padding: 5px;
+                  text-align: center;
+                  border: 1px solid #1a1a1a;
+                  scroll-snap-align: start;
+                  img {
+                    width: 50px;
+                    height: 40px;
+                    object-fit: cover;
+                    border-radius: 6px;
+                    margin-bottom: 6px;
+                  }
+                }
+                #leftArrow,
+                #rightArrow {
+                  backdrop-filter: blur(5px);
+                  padding: 5px 8px;
+                  border-radius: 50%;
+                  cursor: pointer;
+                  z-index: 5;
+                  left: 0px;
+                }
+              }
+              .related-products::-webkit-scrollbar {
+                display: none;
+              }
+            }
+
+            .order-controls {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              background: #111;
+              padding: 10px;
+            }
+          }
+        }
       }
 
-      /* Product image */
-      .product-img {
-        width: 100%;
-        height: auto;
-        max-height: 50vh;
-        object-fit: contain;
-        border-radius: 8px;
-      }
-
-      .product-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .side-icons {
-        position: absolute;
-        right: 16px;
-        bottom: 0px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .side-icons i {
-        border: 1px solid #444;
-        padding: 10px;
-        border-radius: 50%;
-        backdrop-filter: blur(5px);
-      }
-
-      .description {
-        text-align: center;
-        color: #ccc;
-        margin-top: 10px;
-      }
-
-      .related-products::-webkit-scrollbar {
-        display: none;
-      }
-
-      .price-section {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        background-color: #111;
-        border-top: 1px solid #1a1a1a;
-      }
-
-      .price-section .old-price {
-        text-decoration: line-through;
-        color: red;
-      }
-
-      .order-controls {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: #111;
-        padding: 10px;
-      }
-
-      .quantity {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .quantity #decrement,
-      #increment {
-        background: #444;
-        color: white;
-        border: none;
-        padding: 6px 10px;
-        border-radius: 6px;
-      }
-      .related-wrapper {
-        position: relative;
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-      }
-      .related-products {
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        justify-content: flex-start;
-        padding: 10px 10px;
-        scroll-behavior: smooth;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-      }
-      .related-products::-webkit-scrollbar {
-        display: none;
-      }
-
-      .related-item {
-        flex: 0 0 auto;
-        background-color: #000000;
-        border-radius: 10px;
-        padding: 5px;
-        text-align: center;
-        border: 1px solid #1a1a1a;
-        scroll-snap-align: start;
-      }
-
-      .related-item img {
-        width: 50px;
-        height: 40px;
-        object-fit: cover;
-        border-radius: 6px;
-        margin-bottom: 6px;
-      }
       .desktop-container {
         display: none;
-      }
-
-      #leftArrow,
-      #rightArrow {
-        backdrop-filter: blur(5px);
-        padding: 5px 8px;
-        border-radius: 50%;
-        cursor: pointer;
-        z-index: 5;
-        left: 0px;
       }
 
       /* 430px to 730px: subtle spacing tweaks for smaller screens */
