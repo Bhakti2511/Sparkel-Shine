@@ -125,13 +125,10 @@ header {
 
 /* ---------- Common Container ---------- */
 .container {
-      position: relative;
   width: 100%;
-      height: calc(100vh - (var(--header-height) + var(--footer-height)));
-    overflow-y: auto;
-    scroll-snap-type: y mandatory;
+  height: 100%;
   max-width: 375px;
-  padding: 0px 10px 65px;
+  padding: 0px 20px 65px;
   background: rgba(0, 0, 0, 0.7);
 }
 
