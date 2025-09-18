@@ -65,7 +65,8 @@
               .old-price {
                 text-decoration: line-through;
                 color: red;
-                .quantity {
+              }
+              .quantity {
                   display: flex;
                   align-items: center;
                   gap: 10px;
@@ -78,7 +79,6 @@
                   padding: 6px 10px;
                   border-radius: 6px;
                 }
-              }
             }
 
             .related-wrapper {
@@ -87,24 +87,27 @@
               align-items: center;
               overflow: hidden;
               padding:0px 15px;
+
               .related-products {
                 position: relative;
                 display: flex;
                 align-items: center;
-                gap: 15px;
+                gap: 10px;
                 justify-content: flex-start;
                 margin: 10px 15px;
                 scroll-behavior: smooth;
                 overflow-x: auto;
                 scroll-snap-type: x mandatory;
+
                 .related-item {
-                  flex: 0 0 auto;
+                  flex: 0 0 calc(25% - 10px);
                   background-color: #000000;
                   border-radius: 10px;
                   padding: 5px;
                   text-align: center;
                   border: 1px solid #1a1a1a;
                   scroll-snap-align: start;
+
                   img {
                     width: 50px;
                     height: 40px;
