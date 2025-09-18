@@ -15,7 +15,7 @@
         height: calc(100vh - (var(--header-height) + var(--footer-height)));
         overflow-y: auto;
         scroll-snap-type: y mandatory;
-        max-width: 375px;
+        max-width: 23.4rem;
         padding: 0px 0px 65px;
         background: rgba(0, 0, 0, 0.7);
         .single-product {
@@ -27,20 +27,20 @@
           .product-img {
             width: 100%;
             height: auto;
-            max-height: 50vh;
+            max-height: 60vh;
             object-fit: contain;
             border-radius: 8px;
           }
           .side-icons {
             position: absolute;
-            right: 16px;
+            right: 1rem;
             bottom: 0px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 0.6rem;
             i {
               border: 1px solid #444;
-              padding: 10px;
+              padding: 0.6rem;
               border-radius: 50%;
               backdrop-filter: blur(5px);
             }
@@ -52,14 +52,14 @@
             .description {
               text-align: center;
               color: #ccc;
-              margin-top: 10px;
+              margin-top: 0.6rem;
             }
 
             .price-section {
               display: flex;
               justify-content: space-between;
               align-items: center;
-              padding: 10px;
+              padding: 0.6rem;
               background-color: #111;
               border-top: 1px solid #1a1a1a;
               .old-price {
@@ -69,14 +69,14 @@
               .quantity {
                   display: flex;
                   align-items: center;
-                  gap: 10px;
+                  gap: 0.6rem;
                 }
                 #decrement,
                 #increment {
                   background: #444;
                   color: white;
                   border: none;
-                  padding: 6px 10px;
+                  padding: 0.3rem 0.6rem;
                   border-radius: 6px;
                 }
             }
@@ -86,31 +86,31 @@
               display: flex;
               align-items: center;
               overflow: hidden;
-              padding:0px 15px;
+              padding:0px 0.9rem;
 
               .related-products {
                 position: relative;
                 display: flex;
                 align-items: center;
-                gap: 10px;
+                gap: 0.7rem;
                 justify-content: flex-start;
-                margin: 10px 15px;
+                margin: 0.6rem 0.9rem;
                 scroll-behavior: smooth;
                 overflow-x: auto;
                 scroll-snap-type: x mandatory;
 
                 .related-item {
-                  flex: 0 0 calc(25% - 10px);
+                  flex: 0 0 calc(25% - 0.6rem);
                   background-color: #000000;
-                  border-radius: 10px;
+                  border-radius: 0.6rem;
                   padding: 5px;
                   text-align: center;
                   border: 1px solid #3a3a3a;
                   scroll-snap-align: start;
 
                   img {
-                    width: 50px;
-                    height: 40px;
+                    width: 3.1rem;
+                    height: 2.5rem;
                     object-fit: cover;
                     border-radius: 6px;
                     margin-bottom: 6px;
@@ -139,7 +139,7 @@
               justify-content: space-between;
               align-items: center;
               background: #111;
-              padding: 10px;
+              padding: 0.6rem;
             }
           }
         }
@@ -300,11 +300,11 @@
             <i class="fa-thin fa-chevron-left" id="leftArrow"></i>
 
             <div class="related-products" id="relatedSlider">
-              <div class="related-item related-item-border">
+              <div class="related-item">
                 <img src="product-list-img/img11.png" alt="Red2-10" />
                 <div class="text">img 1</div>
               </div>
-              <div class="related-item">
+              <div class="related-item related-item-border">
                 <img src="product-list-img/img12.png" alt="Red2-10" />
                 <div class="text">img 2</div>
               </div>
@@ -381,7 +381,7 @@
                 <img src="product-list-img/img11.png" alt="Red2-10" />
                 <div class="text">img 1</div>
               </div>
-              <div class="related-item related-item-border">
+              <div class="related-item">
                 <img src="product-list-img/img12.png" alt="Red2-10" />
                 <div class="text">img 2</div>
               </div>
@@ -401,7 +401,7 @@
                 <img src="product-list-img/img6.png" alt="Red2-10" />
                 <div class="text">img 6</div>
               </div>
-              <div class="related-item">
+              <div class="related-item related-item-border">
                 <img src="product-list-img/img1.png" alt="Red2-10" />
                 <div class="text">img 7</div>
               </div>
