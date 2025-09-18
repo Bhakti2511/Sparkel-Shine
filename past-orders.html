@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Past Orders</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css" />
+    <style>
+      .container {
+        padding: 0px;
+      }
+      /* Orders List */
+      .orders-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .order-card {
+          background: #111;
+          padding: 10px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .order-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+            .price {
+              font-weight: 400;
+            }
+            .add-btn {
+              display: flex;
+              align-items: center;
+              gap: 4px;
+              padding: 4px 10px;
+              border: 1px solid #1e90ff;
+              border-radius: 20px;
+              background: transparent;
+              color: #1e90ff;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+
+      /* Tablet */
+      @media (min-width: 430px) and (max-width: 730px) {
+        header h2 {
+          font-size: 1.2rem;
+        }
+        .order-card {
+          padding: 14px;
+        }
+        .order-right .add-btn {
+          font-size: 0.9rem;
+          padding: 6px 12px;
+        }
+      }
+
+      /* Desktop */
+      @media (min-width: 731px) {
+        .orders-container {
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        header {
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        .bottom-nav {
+          max-width: 800px;
+          margin: 0 auto;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <i class="fa-thin fa-arrow-left text"></i>
+      <h2>Past orders</h2>
+      <i class="fa-thin fa-bars"></i>
+    </header>
+
+    <!-- Orders List -->
+    <div class="container">
+      <div class="orders-container">
+        <div class="order-card">
+          <div class="order-info">
+            <div class="date text">09-07-2025</div>
+            <div class="id text">SO / 123</div>
+          </div>
+          <div class="order-right">
+            <div class="price text">₹ 240.00</div>
+            <button class="add-btn">
+              <i class="fa-thin fa-cart-shopping"></i> Add
+            </button>
+          </div>
+        </div>
+
+        <div class="order-card">
+          <div class="order-info">
+            <div class="date text">09-07-2025</div>
+            <div class="id text">SO / 123</div>
+          </div>
+          <div class="order-right">
+            <div class="price text">₹ 240.00</div>
+            <button class="add-btn">
+              <i class="fa-thin fa-cart-shopping"></i> Add
+            </button>
+          </div>
+        </div>
+
+        <div class="order-card">
+          <div class="order-info">
+            <div class="date text">09-07-2025</div>
+            <div class="id text">SO / 123</div>
+          </div>
+          <div class="order-right">
+            <div class="price text">₹ 240.00</div>
+            <button class="add-btn">
+              <i class="fa-thin fa-cart-shopping"></i> Add
+            </button>
+          </div>
+        </div>
+
+        <div class="order-card">
+          <div class="order-info">
+            <div class="date text">09-07-2025</div>
+            <div class="id text">SO / 123</div>
+          </div>
+          <div class="order-right">
+            <div class="price text">₹ 240.00</div>
+            <button class="add-btn">
+              <i class="fa-thin fa-cart-shopping"></i> Add
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <nav class="bottom-nav">
+      <i class="fa-thin fa-house"></i>
+      <i class="fa-thin fa-shopping-cart"></i>
+      <i class="fa-thin fa-video"></i>
+      <i class="fa-thin fa-share-alt"></i>
+      <i class="fa-thin fa-magnifying-glass"></i>
+    </nav>
+  </body>
+</html>
