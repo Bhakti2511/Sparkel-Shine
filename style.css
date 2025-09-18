@@ -131,7 +131,7 @@ header {
     overflow-y: auto;
     scroll-snap-type: y mandatory;
   max-width: 375px;
-  padding: 0px 20px 65px;
+  padding: 0px 10px 65px;
   background: rgba(0, 0, 0, 0.7);
 }
 
