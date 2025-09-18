@@ -6,6 +6,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+:root {
+  --header-height: 0px;
+  --footer-height: 40px;
+}
 
 body {
   font-family: "Montserrat", sans-serif;
@@ -14,15 +18,14 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   color: #fff;
 }
 
 label,
 p,
 .text {
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 300;
   color: #fff;
 }
 i {
@@ -71,6 +74,55 @@ input::placeholder {
   }
 }
 
+/* Header  */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background: #000;
+  height: var(--header-height);
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+  i {
+    font-size: 1.5rem;
+  }
+  .right-icons i {
+    font-size: 1.2rem;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+}
+
+/* Footer */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--footer-height);
+  background-color: #000;
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 0;
+  border-top: 1px solid #222;
+  z-index: 10;
+
+  i {
+    color: white;
+    font-size: 1.2rem;
+  }
+}
+
 /* ---------- Common Container ---------- */
 .container {
   width: 100%;
@@ -78,6 +130,32 @@ input::placeholder {
   max-width: 375px;
   padding: 0px 20px 65px;
   background: rgba(0, 0, 0, 0.7);
+}
+
+/* ---------- Common Icons ---------- */
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 24px;
+
+  i {
+    cursor: pointer;
+  }
+
+  .fa-whatsapp {
+    color: #25d366;
+  }
+
+  .fa-phone {
+    color: #4caf50;
+  }
+}
+
+.support a {
+  color: #1aa89e;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 /* ---------- Login Section ---------- */
@@ -201,29 +279,6 @@ input::placeholder {
 }
 
 /* ---------- Category ---------- */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 20px 20px 20px;
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 1;
-  background: #000;
-  h2 {
-    font-size: 1.2rem;
-    font-weight: 400;
-  }
-  i {
-    font-size: 1.5rem;
-  }
-  .right-icons i {
-    font-size: 1.2rem;
-    margin-right: 8px;
-    cursor: pointer;
-  }
-}
 
 #Category {
   .new-arrivals {
@@ -237,22 +292,24 @@ header {
   }
 
   .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    column-count: 2; 
     gap: 16px;
 
     .item {
+      display: inline-block; 
+       width: 100%; 
+       margin-bottom: 16px;
       background-color: #1a1a1a;
       border-radius: 9px;
       overflow: hidden;
       position: relative;
       text-align: center;
-      height: 160px;
+      height: fit-content;
       padding-bottom: 8px;
 
       img {
         width: 100%;
-        height: 128px;
+        height: auto; 
         display: block;
         object-fit: cover;
         border-radius: 9px 9px 0 0;
@@ -282,24 +339,6 @@ header {
   }
 }
 
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #000;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 15px 0;
-  border-top: 1px solid #222;
-
-  i {
-    color: white;
-    font-size: 1.2rem;
-  }
-}
-
 /* ---------- Product-list ---------- */
 #product-list {
   .product-grid {
@@ -324,7 +363,7 @@ header {
           position: relative;
 
           img {
-            height: 180px;
+            height: 200px;
           }
         }
 
@@ -338,7 +377,7 @@ header {
             flex: 1;
 
             img {
-              height: 85px;
+              height: 95px;
             }
           }
         }
@@ -356,7 +395,7 @@ header {
       img {
         width: 100%;
         border-radius: 12px;
-        object-fit: cover;
+        object-fit: fill;
         display: block;
       }
       .img-number {
@@ -371,32 +410,6 @@ header {
       }
     }
   }
-}
-
-/* ---------- Common Icons ---------- */
-.icons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  font-size: 24px;
-
-  i {
-    cursor: pointer;
-  }
-
-  .fa-whatsapp {
-    color: #25d366;
-  }
-
-  .fa-phone {
-    color: #4caf50;
-  }
-}
-
-.support a {
-  color: #1aa89e;
-  text-decoration: none;
-  font-weight: bold;
 }
 
 /* ---------- Media Queries ---------- */
@@ -415,8 +428,8 @@ header {
   p,
   button,
   .text {
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 14px;
+    font-weight: 300;
   }
 
   i {
