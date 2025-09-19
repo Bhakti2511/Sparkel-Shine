@@ -18,16 +18,25 @@
         max-width: 23.4rem;
         padding: 0px 0px 65px;
         background: rgba(0, 0, 0, 0.7);
+
         .single-product {
           height: calc(100vh - var(--header-height) - var(--footer-height));
           display: flex;
           flex-direction: column;
           scroll-snap-align: start;
           box-sizing: border-box;
+
+          > div:first-child {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+          }
+
           .product-img {
             width: 100%;
             height: auto;
-            max-height: 60vh;
             object-fit: contain;
             border-radius: 8px;
           }
@@ -49,6 +58,8 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            background: #000;
+
             .description {
               text-align: center;
               color: #ccc;
@@ -67,18 +78,18 @@
                 color: red;
               }
               .quantity {
-                  display: flex;
-                  align-items: center;
-                  gap: 0.6rem;
-                }
-                #decrement,
-                #increment {
-                  background: #444;
-                  color: white;
-                  border: none;
-                  padding: 0.3rem 0.6rem;
-                  border-radius: 6px;
-                }
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+              }
+              #decrement,
+              #increment {
+                background: #444;
+                color: white;
+                border: none;
+                padding: 0.3rem 0.6rem;
+                border-radius: 6px;
+              }
             }
 
             .related-wrapper {
@@ -86,7 +97,7 @@
               display: flex;
               align-items: center;
               overflow: hidden;
-              padding:0px 0.9rem;
+              padding: 0px 0.9rem;
 
               .related-products {
                 position: relative;
@@ -116,8 +127,8 @@
                     margin-bottom: 6px;
                   }
                 }
-                .related-item-border{
-                  border: 1px solid #d1d1d1 ;
+                .related-item-border {
+                  border: 1px solid #d1d1d1;
                 }
                 #leftArrow,
                 #rightArrow {
@@ -271,7 +282,7 @@
           </div>
 
           <!-- Order Controls -->
-          <div class="order-controls" style="margin-bottom: 40px">
+          <div class="order-controls" >
             <div class="text">Order Qty: 50</div>
             <div class="text">Stock: 15 / 369</div>
           </div>
@@ -324,10 +335,6 @@
                 <img src="product-list-img/img6.png" alt="Red2-10" />
                 <div class="text">img 6</div>
               </div>
-              <div class="related-item">
-                <img src="product-list-img/img1.png" alt="Red2-10" />
-                <div class="text">img 7</div>
-              </div>
             </div>
 
             <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
@@ -348,7 +355,7 @@
           </div>
 
           <!-- Order Controls -->
-          <div class="order-controls" style="margin-bottom: 40px">
+          <div class="order-controls" >
             <div class="text">Order Qty: 50</div>
             <div class="text">Stock: 15 / 369</div>
           </div>
@@ -425,7 +432,7 @@
           </div>
 
           <!-- Order Controls -->
-          <div class="order-controls" style="margin-bottom: 40px">
+          <div class="order-controls" >
             <div class="text">Order Qty: 50</div>
             <div class="text">Stock: 15 / 369</div>
           </div>
@@ -629,29 +636,34 @@
         }
       });
 
-      const slider = document.getElementById("relatedSlider");
-      const items = slider.querySelectorAll(".related-item");
+      document.querySelectorAll(".related-wrapper").forEach(wrapper => {
+  const slider = wrapper.querySelector(".related-products");
+  const items = slider.querySelectorAll(".related-item");
+  const leftArrow = wrapper.querySelector(".fa-chevron-left");
+  const rightArrow = wrapper.querySelector(".fa-chevron-right");
 
-      let currentIndex = 0;
+  let currentIndex = 0;
 
-      function scrollToItem(index) {
-        if (index >= 0 && index < items.length) {
-          currentIndex = index;
-          items[currentIndex].scrollIntoView({
-            behavior: "smooth",
-            inline: "center",
-            block: "nearest",
-          });
-        }
-      }
-
-      document.getElementById("leftArrow").addEventListener("click", () => {
-        scrollToItem(currentIndex - 1);
+  function scrollToItem(index) {
+    if (index >= 0 && index < items.length) {
+      currentIndex = index;
+      items[currentIndex].scrollIntoView({
+        behavior: "smooth",
+        inline: "start",
+        block: "nearest"
       });
+    }
+  }
 
-      document.getElementById("rightArrow").addEventListener("click", () => {
-        scrollToItem(currentIndex + 1);
-      });
+  leftArrow.addEventListener("click", () => {
+    scrollToItem(currentIndex - 1);
+  });
+
+  rightArrow.addEventListener("click", () => {
+    scrollToItem(currentIndex + 1);
+  });
+});
+
     </script>
   </body>
 </html>
