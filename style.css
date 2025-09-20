@@ -584,7 +584,7 @@ header {
   overflow: scroll;
   padding-bottom: 40px;
   .product-card {
-    background: #111;
+    background: #272727;
     border-radius: 10px;
     overflow: hidden;
     position: relative;
