@@ -8,149 +8,6 @@
     <link
       rel="stylesheet"
       href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css" />
-    <style>
-      /* Product Grid */
-      .product-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        overflow: scroll;
-        padding-bottom: 40px;
-        .product-card {
-          background: #111;
-          border-radius: 10px;
-          overflow: hidden;
-          position: relative;
-          height: fit-content;
-
-          .img-wrapper {
-            position: relative;
-            height: 150px;
-
-            img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              display: block;
-              border-radius: 8px;
-            }
-
-            .close-btn {
-              position: absolute;
-              top: 6px;
-              right: 6px;
-              background: red;
-              border: none;
-              border-radius: 50%;
-              width: 22px;
-              height: 22px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              cursor: pointer;
-
-              i {
-                color: #fff;
-                font-size: 0.8rem;
-              }
-            }
-          }
-
-          .product-info {
-            padding: 15px 10px;
-
-            .title {
-              font-size: 0.85rem;
-              margin-bottom: 4px;
-            }
-
-            .price {
-              font-size: 0.8rem;
-
-              .old {
-                text-decoration: line-through;
-                color: red;
-                margin-right: 6px;
-              }
-
-              .new {
-                color: #fff;
-              }
-            }
-          }
-        }
-      }
-
-      /* Bottom Navigation */
-      .product-nav {
-        display: flex;
-        position: fixed;
-        bottom: 40px;
-        width: 90%;
-        gap: 10px;
-        background-color: #000000;
-        padding: 10px 0px;
-        .nav-btn {
-          flex: 1;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 10px;
-          border-radius: 10px;
-          background: #333;
-          color: #fff;
-          border: none;
-          cursor: pointer;
-
-          i {
-            color: #fff;
-          }
-        }
-      }
-
-      .nav-btn.delete {
-        background: red;
-
-        i {
-          color: #fff;
-        }
-      }
-
-      /* Tablet */
-      @media (min-width: 430px) and (max-width: 730px) {
-        .product-grid {
-          gap: 16px;
-        }
-
-        .product-info .title {
-          font-size: 0.9rem;
-        }
-      }
-
-      /* Desktop */
-      @media (min-width: 731px) {
-        .container {
-          max-width: 900px !important;
-          margin-bottom: auto;
-        }
-        .product-grid {
-          grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
-          max-width: 900px;
-          margin: 0 auto;
-        }
-
-        .product-info .title {
-          font-size: 1rem;
-        }
-
-        .product-nav {
-          justify-content: center;
-          width: 96%;
-          gap: 24px;
-        }
-      }
-    </style>
   </head>
   <body>
     <!-- Header -->
@@ -218,6 +75,7 @@
             </div>
           </div>
         </div>
+
         <div class="product-card">
           <div class="img-wrapper">
             <img src="product-list-img/img5.png" alt="Product 4" />
@@ -231,6 +89,7 @@
             </div>
           </div>
         </div>
+
         <div class="product-card">
           <div class="img-wrapper">
             <img src="product-list-img/img9.png" alt="Product 4" />
