@@ -12,161 +12,8 @@
       .text {
         font-size: 12px;
       }
-      p {
-        font-size: 14px;
-        font-weight: 300;
-      }
-      /* Cart Container */
-      .container{
-        padding:0px;
-      }
-      .cart-container {
-        justify-content: space-between;
-        height: 80vh;
-        display: flex;
-        flex-direction: column;
-        .cart-item {
-          display: flex;
-          background: #111;
-          margin-bottom: 12px;
-          padding: 10px;
-          align-items: flex-start;
-
-          img {
-            width: 70px;
-            height: 70px;
-            object-fit: contain;
-            border-radius: 6px;
-            margin-right: 10px;
-          }
-        }
-
-        .cart-info {
-          flex: 1;
-
-          .title {
-            margin-bottom: 4px;
-          }
-
-          .price {
-            margin-top: 4px;
-          }
-        }
-
-        .cart-actions {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 5px;
-          .cart-item-count,
-          .cart-total-qty {
-            display: flex;
-            gap: 5px;
-            .unit {
-              font-size: 14px;
-              align-content: center;
-            }
-
-            .qty-control {
-              display: flex;
-              align-items: center;
-              border: 1px solid #555;
-              border-radius: 20px;
-              padding: 3px;
-              button {
-                width: 24px;
-                height: 24px;
-                border: none;
-                border-radius: 50px;
-                background: #5d5d5d;
-                color: #fff;
-                cursor: pointer;
-              }
-            }
-
-            span {
-              min-width: 18px;
-              text-align: center;
-            }
-          }
-
-          .qty {
-            align-content: center;
-          }
-        }
-
-        .delete {
-          border: 1px solid red;
-          background: transparent;
-          color: red;
-          padding: 4px 10px;
-          border-radius: 20px;
-          cursor: pointer;
-        }
-      }
-
-      .cart-item-holder {
-        flex: 1;
-        overflow-y: auto;
-        scrollbar-width: none;
-        padding-bottom: 80px;
-      }
-
-      .summary {
-        display: flex;
-        position: fixed;
-        bottom: 37px;
-        width: 100%;
-        gap: 2px;
-        background-color: #000000;
-        padding: 10px;
-        flex-direction: column;
-
-        p {
-          display: flex;
-          justify-content: space-between;
-        }
-
-        .total {
-          font-weight: 600;
-        }
-
-        .place-order {
-          width: 100%;
-          background: #555;
-          color: #fff;
-          border: none;
-          border-radius: 10px;
-          padding: 12px;
-          margin-top: 12px;
-          cursor: pointer;
-        }
-      }
-
-      /* Tablet */
-      @media (min-width: 430px) and (max-width: 730px) {
-        .cart-item img {
-          width: 90px;
-          height: 90px;
-        }
-      }
-
-      /* Desktop */
-      @media (min-width: 731px) {
-        .cart-container {
-          max-width: 800px;
-          margin: 0 auto;
-        }
-        .cart-item {
-          padding: 16px;
-        }
-        .summary {
-          max-width: 800px;
-          margin: 0 auto 80px;
-        }
-        .place-order {
-          background: #333;
-        }
+      .container {
+        padding: 0px;
       }
     </style>
   </head>
@@ -177,157 +24,234 @@
       <h2>Cart</h2>
       <i class="fa-thin fa-bars"></i>
     </header>
-
-    <div class="container">
-      <!-- Cart Items -->
-      <div class="cart-container">
-        <div class="cart-item-holder">
-          <div class="cart-item">
-            <img src="https://divineerp-bucket-1.s3.ap-south-1.amazonaws.com/480DA278-B428-426F-B550-F78D4A400495/Files/475136FF-A248-5D1D-BC4A-62C5A533A743.png" alt="Product 1" />
-            <div class="cart-info">
-              <div class="title text">B0009-2-6R</div>
-              <div class="details text">12 pair / box</div>
-              <div class="price text">₹ 240.00 / pair</div>
-            </div>
-            <div class="cart-actions">
-              <div class="cart-item-count">
-                <div class="unit text">box</div>
-                <div class="qty-control">
-                  <button class="btn2">-</button>
-                  <span>0</span>
-                  <button class="btn2">+</button>
-                </div>
-              </div>
-              <div class="cart-total-qty">
-                <div class="qty text">Qty: 50</div>
-                <button class="delete">Delete</button>
-              </div>
-            </div>
+    <!-- Cart Items -->
+    <div class="cart-container">
+      <div class="cart-item-holder">
+        <div class="cart-item">
+          <img
+            src="https://divineerp-bucket-1.s3.ap-south-1.amazonaws.com/480DA278-B428-426F-B550-F78D4A400495/Files/475136FF-A248-5D1D-BC4A-62C5A533A743.png"
+            alt="Product 1" />
+          <div class="cart-info">
+            <div class="title text">B0009-2-6R</div>
+            <div class="details text">12 pair / box</div>
+            <div class="price text">₹ 240.00 / pair</div>
           </div>
-
-          <div class="cart-item">
-            <img src="product-list-img/img2.png" alt="Product 2" />
-            <div class="cart-info">
-              <div class="title text">B0009-2-6R</div>
-              <div class="details text">12 pair / box</div>
-              <div class="price text">₹ 240.00 / pair</div>
-            </div>
-            <div class="cart-actions">
-              <div class="cart-item-count">
-                <div class="unit text">box</div>
-                <div class="qty-control">
-                  <button class="btn2">-</button>
-                  <span>0</span>
-                  <button class="btn2">+</button>
-                </div>
-              </div>
-              <div class="cart-total-qty">
-                <div class="qty text">Qty: 50</div>
-                <button class="delete">Delete</button>
+          <div class="cart-actions">
+            <div class="cart-item-count">
+              <div class="unit text">box</div>
+              <div class="qty-control">
+                <button class="btn2">-</button>
+                <span>0</span>
+                <button class="btn2">+</button>
               </div>
             </div>
-          </div>
-
-          <div class="cart-item">
-            <img src="product-list-img/img5.png" alt="Product 2" />
-            <div class="cart-info">
-              <div class="title text">B0009-2-6R</div>
-              <div class="details text">12 pair / box</div>
-              <div class="price text">₹ 240.00 / pair</div>
-            </div>
-            <div class="cart-actions">
-              <div class="cart-item-count">
-                <div class="unit text">box</div>
-                <div class="qty-control">
-                  <button class="btn2">-</button>
-                  <span>0</span>
-                  <button class="btn2">+</button>
-                </div>
-              </div>
-              <div class="cart-total-qty">
-                <div class="qty text">Qty: 50</div>
-                <button class="delete">Delete</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="cart-item">
-            <img src="product-list-img/img8.png" alt="Product 2" />
-            <div class="cart-info">
-              <div class="title text">B0009-2-6R</div>
-              <div class="details text">12 pair / box</div>
-              <div class="price text">₹ 240.00 / pair</div>
-            </div>
-            <div class="cart-actions">
-              <div class="cart-item-count">
-                <div class="unit text">box</div>
-                <div class="qty-control">
-                  <button class="btn2">-</button>
-                  <span>0</span>
-                  <button class="btn2">+</button>
-                </div>
-              </div>
-              <div class="cart-total-qty">
-                <div class="qty text">Qty: 50</div>
-                <button class="delete">Delete</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="cart-item">
-            <img src="product-list-img/img10.png" alt="Product 2" />
-            <div class="cart-info">
-              <div class="title text">B0009-2-6R</div>
-              <div class="details text">12 pair / box</div>
-              <div class="price text">₹ 240.00 / pair</div>
-            </div>
-            <div class="cart-actions">
-              <div class="cart-item-count">
-                <div class="unit text">box</div>
-                <div class="qty-control">
-                  <button class="btn2">-</button>
-                  <span>0</span>
-                  <button class="btn2">+</button>
-                </div>
-              </div>
-              <div class="cart-total-qty">
-                <div class="qty text">Qty: 50</div>
-                <button class="delete">Delete</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="cart-item">
-            <img src="product-list-img/img12.png" alt="Product 2" />
-            <div class="cart-info">
-              <div class="title text">B0009-2-6R</div>
-              <div class="details text">12 pair / box</div>
-              <div class="price text">₹ 240.00 / pair</div>
-            </div>
-            <div class="cart-actions">
-              <div class="cart-item-count">
-                <div class="unit text">box</div>
-                <div class="qty-control">
-                  <button class="btn2">-</button>
-                  <span>0</span>
-                  <button class="btn2">+</button>
-                </div>
-              </div>
-              <div class="cart-total-qty">
-                <div class="qty text">Qty: 50</div>
-                <button class="delete">Delete</button>
-              </div>
+            <div class="cart-total-qty">
+              <div class="qty text">Qty: 50</div>
+              <button class="delete">Delete</button>
             </div>
           </div>
         </div>
 
-        <!-- Summary Section -->
-        <div class="summary">
-          <p>Products: 4 <span>₹582.00</span></p>
-          <p class="total">Box: 4 <span>(GST) ₹582.00</span></p>
-          <p>Qty: 48<span>₹6,402.00</span></p>
-          <button class="place-order">Place Order</button>
+        <div class="cart-item">
+          <img src="product-list-img/img2.png" alt="Product 2" />
+          <div class="cart-info">
+            <div class="title text">B0009-2-6R</div>
+            <div class="details text">12 pair / box</div>
+            <div class="price text">₹ 240.00 / pair</div>
+          </div>
+          <div class="cart-actions">
+            <div class="cart-item-count">
+              <div class="unit text">box</div>
+              <div class="qty-control">
+                <button class="btn2">-</button>
+                <span>0</span>
+                <button class="btn2">+</button>
+              </div>
+            </div>
+            <div class="cart-total-qty">
+              <div class="qty text">Qty: 50</div>
+              <button class="delete">Delete</button>
+            </div>
+          </div>
         </div>
+
+        <div class="cart-item">
+          <img src="product-list-img/img5.png" alt="Product 2" />
+          <div class="cart-info">
+            <div class="title text">B0009-2-6R</div>
+            <div class="details text">12 pair / box</div>
+            <div class="price text">₹ 240.00 / pair</div>
+          </div>
+          <div class="cart-actions">
+            <div class="cart-item-count">
+              <div class="unit text">box</div>
+              <div class="qty-control">
+                <button class="btn2">-</button>
+                <span>0</span>
+                <button class="btn2">+</button>
+              </div>
+            </div>
+            <div class="cart-total-qty">
+              <div class="qty text">Qty: 50</div>
+              <button class="delete">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-item">
+          <img src="product-list-img/img8.png" alt="Product 2" />
+          <div class="cart-info">
+            <div class="title text">B0009-2-6R</div>
+            <div class="details text">12 pair / box</div>
+            <div class="price text">₹ 240.00 / pair</div>
+          </div>
+          <div class="cart-actions">
+            <div class="cart-item-count">
+              <div class="unit text">box</div>
+              <div class="qty-control">
+                <button class="btn2">-</button>
+                <span>0</span>
+                <button class="btn2">+</button>
+              </div>
+            </div>
+            <div class="cart-total-qty">
+              <div class="qty text">Qty: 50</div>
+              <button class="delete">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-item">
+          <img src="product-list-img/img10.png" alt="Product 2" />
+          <div class="cart-info">
+            <div class="title text">B0009-2-6R</div>
+            <div class="details text">12 pair / box</div>
+            <div class="price text">₹ 240.00 / pair</div>
+          </div>
+          <div class="cart-actions">
+            <div class="cart-item-count">
+              <div class="unit text">box</div>
+              <div class="qty-control">
+                <button class="btn2">-</button>
+                <span>0</span>
+                <button class="btn2">+</button>
+              </div>
+            </div>
+            <div class="cart-total-qty">
+              <div class="qty text">Qty: 50</div>
+              <button class="delete">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-item">
+          <img src="product-list-img/img12.png" alt="Product 2" />
+          <div class="cart-info">
+            <div class="title text">B0009-2-6R</div>
+            <div class="details text">12 pair / box</div>
+            <div class="price text">₹ 240.00 / pair</div>
+          </div>
+          <div class="cart-actions">
+            <div class="cart-item-count">
+              <div class="unit text">box</div>
+              <div class="qty-control">
+                <button class="btn2">-</button>
+                <span>0</span>
+                <button class="btn2">+</button>
+              </div>
+            </div>
+            <div class="cart-total-qty">
+              <div class="qty text">Qty: 50</div>
+              <button class="delete">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-item">
+          <img src="product-list-img/img12.png" alt="Product 2" />
+          <div class="cart-info">
+            <div class="title text">B0009-2-6R</div>
+            <div class="details text">12 pair / box</div>
+            <div class="price text">₹ 240.00 / pair</div>
+          </div>
+          <div class="cart-actions">
+            <div class="cart-item-count">
+              <div class="unit text">box</div>
+              <div class="qty-control">
+                <button class="btn2">-</button>
+                <span>0</span>
+                <button class="btn2">+</button>
+              </div>
+            </div>
+            <div class="cart-total-qty">
+              <div class="qty text">Qty: 50</div>
+              <button class="delete">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-item">
+          <img src="product-list-img/img12.png" alt="Product 2" />
+          <div class="cart-info">
+            <div class="title text">B0009-2-6R</div>
+            <div class="details text">12 pair / box</div>
+            <div class="price text">₹ 240.00 / pair</div>
+          </div>
+          <div class="cart-actions">
+            <div class="cart-item-count">
+              <div class="unit text">box</div>
+              <div class="qty-control">
+                <button class="btn2">-</button>
+                <span>0</span>
+                <button class="btn2">+</button>
+              </div>
+            </div>
+            <div class="cart-total-qty">
+              <div class="qty text">Qty: 50</div>
+              <button class="delete">Delete</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-item">
+          <img src="product-list-img/img12.png" alt="Product 2" />
+          <div class="cart-info">
+            <div class="title text">B0009-2-6R</div>
+            <div class="details text">12 pair / box</div>
+            <div class="price text">₹ 240.00 / pair</div>
+          </div>
+          <div class="cart-actions">
+            <div class="cart-item-count">
+              <div class="unit text">box</div>
+              <div class="qty-control">
+                <button class="btn2">-</button>
+                <span>0</span>
+                <button class="btn2">+</button>
+              </div>
+            </div>
+            <div class="cart-total-qty">
+              <div class="qty text">Qty: 50</div>
+              <button class="delete">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary Section -->
+      <div class="summary">
+        <div class="summery-text">
+          <p>Products: 4</p>
+          <p>₹582.00</p>
+        </div>
+        <div class="summery-text">
+          <p>Box: 4</p>
+          <p>(GST) ₹582.00</p>
+        </div>
+        <div class="summery-text">
+          <p>Qty: 48</p>
+          <p>₹6,402.00</p>
+        </div>
+        <button class="place-order">Place Order</button>
       </div>
     </div>
 
