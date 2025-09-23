@@ -656,6 +656,7 @@ header {
   gap: 10px;
   background-color: #000000;
   padding: 10px 0px;
+  justify-self: center;
   .nav-btn {
     flex: 1;
     display: flex;
