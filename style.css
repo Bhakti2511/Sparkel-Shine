@@ -368,7 +368,7 @@ header {
 
             img {
               height: 200px;
-              object-fit: contain;
+              object-fit: cover;
             }
           }
 
@@ -383,7 +383,7 @@ header {
 
               img {
                 height: 95px;
-                object-fit: contain;
+                object-fit: cover;
               }
             }
           }
