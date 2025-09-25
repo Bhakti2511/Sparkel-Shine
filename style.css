@@ -367,7 +367,7 @@ header {
             position: relative;
 
             img {
-              height: 200px;
+              height: 300px;
               object-fit: cover;
             }
           }
@@ -382,7 +382,7 @@ header {
               flex: 1;
 
               img {
-                height: 95px;
+                height: 145px;
                 object-fit: cover;
               }
             }
