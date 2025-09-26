@@ -975,7 +975,7 @@ header {
 
   .container {
     max-width: 600px;
-    padding: 10px 20px 120px;
+    padding: 10px 20px;
     margin: 0 auto;
     border-radius: 16px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
@@ -1117,7 +1117,7 @@ header {
 
   .container {
     max-width: 1000px;
-    padding: 10px 24px 120px;
+    padding: 10px 24px;
     margin: 0 auto;
   }
 
