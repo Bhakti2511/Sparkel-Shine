@@ -67,13 +67,13 @@ input::placeholder {
 
 .logo {
   text-align: center;
-  margin-bottom: 30px;
-  height: 20%;
 
   img {
-    width: 223px;
+    max-width: 300px;
+    width: 100%;
   }
 }
+
 
 /* Common CSS  */
 header {
@@ -164,20 +164,32 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 98vh;
-  width: 100%;
+  height: 100vh;
+
+  .logo {
+    order: 1;
+    flex-shrink: 0;
+  }
 
   .sec-form {
     display: flex;
     flex-direction: column;
     gap: 13px;
-    height: 60%;
+    order: 2;
+    flex: 1;
+    justify-content: center;
+
+    .form-label {
+      padding: 5px 10px;
+      display: flex;
+      justify-content: space-between;
+    }
 
     .form-group {
       position: relative;
 
       label {
-        margin: 0px 0px 5px 15px;
+        font-size: 16px;
         display: block;
         color: #fff;
       }
@@ -216,12 +228,16 @@ header {
       }
 
       i {
-        position: absolute;
-        right: 12px;
-        top: 0px;
         color: #ffffff70;
       }
     }
+  }
+
+  .bottom-btn {
+    order: 3;
+    flex-shrink: 0;
+    text-align: center;
+    padding: 10px 0px;
   }
 }
 
