@@ -126,7 +126,7 @@ header {
   width: 100%;
   height: calc(var(--vh, 1vh) * 100);
   max-width: 375px;
-  padding: 0px 10px 65px;
+  padding: 0px 10px;
   background: rgba(0, 0, 0, 0.7);
 }
 
