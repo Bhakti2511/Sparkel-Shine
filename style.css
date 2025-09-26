@@ -439,8 +439,8 @@ header {
 .container-product {
   position: relative;
   width: 100%;
-  height: calc(100vh - (var(--header-height) + var(--footer-height)));
-  overflow-y: auto;
+  height: calc(var(--vh, 1vh) * 100 - var(--header-height) - var(--footer-height));
+  overflow-y: scroll;
   scroll-snap-type: y mandatory;
   flex: 1 auto;
   gap: 10px;
@@ -450,9 +450,7 @@ header {
   background: rgba(0, 0, 0, 0.7);
 
   .single-product {
-    height: calc(
-      var(--vh, 1vh) * 100 - var(--header-height) - var(--footer-height)
-    );
+    height: calc( var(--vh, 1vh) * 100 - var(--header-height) - var(--footer-height));
     display: flex;
     flex-direction: column;
     justify-content: space-between;
