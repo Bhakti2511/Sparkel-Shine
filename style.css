@@ -174,12 +174,16 @@ header {
           gap: 13px;
           order: 2;
           flex: 1;
+          padding: 0px 10px;
           justify-content: center;
 
           .form-label {
             padding: 5px 10px;
             display: flex;
             justify-content: space-between;
+            background: transparent;
+            border: 1px solid #ffffff50;
+            border-radius: 8px;
           }
 
           .form-group {
@@ -195,8 +199,7 @@ header {
               width: 100%;
               padding: 8px 20px 8px 10px;
               background: transparent;
-              border: 1px solid #ffffff50;
-              border-radius: 8px;
+              border: none;
               color: white;
 
               &[type="file"] {
@@ -226,6 +229,8 @@ header {
 
             i {
               color: #ffffff70;
+              font-size: 20px;
+              margin-top: 5px;
             }
           }
         }
