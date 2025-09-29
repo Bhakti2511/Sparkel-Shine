@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>grid</title>
+    <!-- <link rel="stylesheet" href="style2.css" /> -->
+    <link href="script.js" />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css" />
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: #000;
+        color: #f5f5f5;
+        height: 100vh;
+      }
+      .logo-bg {
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.95),
+            rgba(0, 0, 0, 0)
+          ),
+          url("bg-img.png") no-repeat center;
+        background-size: 500px 800px;
+        background-color: #000 !important;
+      }
+
+      .logo {
+        text-align: center;
+
+        img {
+          max-width: 250px;
+        }
+      }
+      .btn {
+        display: inline-block;
+        width: 80%;
+        color: white;
+        border: none;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        padding: 12px 20px;
+        align-self: center;
+        transition: background-color 0.3s;
+        background: #5326bd;
+        box-shadow: 0 4px 10px rgba(109, 74, 255, 0.4);
+
+        &:hover {
+          opacity: 0.9;
+        }
+      }
+      #login {
+        display: grid;
+        grid-template-rows: auto 1fr auto; /*logo | form | bottom button */
+        height: 100%;
+
+        .logo {
+          grid-row: 1; /* stays on top*/
+        }
+
+        .sec-form {
+          grid-row: 2; /*middle*/
+          display: grid;
+          grid-auto-rows: max-content;
+          gap: 10px;
+          padding: 0 10px;
+          align-content: center; /* vertically center form*/
+
+          .form-label {
+            padding: 5px 10px;
+            display: grid;
+            grid-template-columns: auto 1fr; /* label text + icon*/
+            align-items: center;
+            background: transparent;
+            border: 1px solid #ffffff50;
+            border-radius: 8px;
+          }
+
+          .form-group {
+            position: relative;
+            display: grid;
+            gap: 6px;
+
+            label {
+              font-size: 16px;
+              color: #fff;
+              display: block;
+            }
+
+            input {
+              width: 100%;
+              padding: 8px 20px 8px 10px;
+              background: transparent;
+              border: none;
+              color: white;
+
+              &[type="file"] {
+                display: none;
+              }
+            }
+
+            .upload-label {
+              display: grid;
+              grid-template-rows: auto auto;
+              justify-items: center;
+              gap: 10px;
+              color: white;
+              cursor: pointer;
+              margin-left: -3px;
+
+              i {
+                font-size: 50px;
+                margin-bottom: 12px;
+                text-align: center;
+              }
+            }
+
+            i {
+              color: #ffffff70;
+              font-size: 20px;
+            }
+          }
+        }
+
+        .bottom-btn {
+          grid-row: 3; /* stays at bottom*/
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body class="logo-bg">
+    <div class="container" id="login">
+      <div class="logo">
+        <img src="logo-removebg.png" alt="Logo" />
+      </div>
+
+      <div class="sec-form">
+        <div class="form-group">
+          <!-- <div class="form-label">
+            <label>User Name</label>
+            <i class="fa-thin fa-user"></i>
+          </div> -->
+          <div class="form-label">
+            <i class="fa-thin fa-user"></i
+            ><input type="text" placeholder="Name" class="text" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <!-- <div class="form-label">
+            <label>Mobile</label>
+            <i class="fa-thin fa-mobile-screen-button"></i>
+          </div> -->
+          <div class="form-label">
+            <i class="fa-thin fa-mobile-screen-button"></i
+            ><input type="text" placeholder="Number" class="text" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <!-- <div class="form-label">
+            <label>City</label>
+            <i class="fa-thin fa-building"></i>
+          </div> -->
+          <div class="form-label">
+            <i class="fa-thin fa-building"></i
+            ><input type="text" placeholder="City" class="text" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <!-- <div class="form-label">
+            <label>State</label>
+            <i class="fa-thin fa-city"></i>
+          </div> -->
+          <div class="form-label">
+            <i class="fa-thin fa-city"></i
+            ><input type="text" placeholder="State" class="text" />
+          </div>
+        </div>
+
+        <div
+          class="form-group form-group-img"
+          style="align-self: center !important">
+          <label for="picture" class="upload-label">
+            <i class="fa-thin fa-image"></i>
+            <p>Upload Visiting card</p>
+          </label>
+          <input
+            type="file"
+            id="picture"
+            name="picture"
+            accept="image/*"
+            required />
+        </div>
+      </div>
+      <div class="bottom-btn">
+        <button class="btn">Login</button>
+      </div>
+    </div>
+  </body>
+</html>
