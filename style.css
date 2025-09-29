@@ -66,8 +66,7 @@ input::placeholder {
   text-align: center;
 
   img {
-    max-width: 250px;
-    width: 100%;
+    width: clamp(230px, 50vw, 350px);
   }
 }
 
