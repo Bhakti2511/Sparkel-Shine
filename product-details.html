@@ -614,114 +614,128 @@
     </div>
 
         <script>
-  // Core Height Calculation
-  function setHeights() {
-    const vh = window.visualViewport?.height || window.innerHeight;
-    const header = document.querySelector('header');
-    const footer = document.querySelector('.bottom-nav');
-    const hHeight = header?.offsetHeight || 0;
-    const fHeight = footer?.offsetHeight || 0;
-    const availHeight = vh - hHeight - fHeight; // Removed -75; now add it only for last product/container
+      // Core Height Calculation
+      function setHeights() {
+        const vh = window.visualViewport?.height || window.innerHeight;
+        const header = document.querySelector("header");
+        const footer = document.querySelector(".bottom-nav");
+        const hHeight = header?.offsetHeight || 0;
+        const fHeight = footer?.offsetHeight || 0;
+        const availHeight = vh - hHeight - fHeight;
 
-    // Set body padding for fixed elements
-    document.body.style.paddingTop = `${hHeight}px`;
-    document.body.style.paddingBottom = `${fHeight}px`;
+        // Set body padding for fixed elements
+        document.body.style.paddingTop = `${hHeight}px`;
+        document.body.style.paddingBottom = `${fHeight}px`;
 
-    // Set CSS vars
-    document.documentElement.style.setProperty('--vh', `${vh * 0.01}px`);
-    document.documentElement.style.setProperty('--header-height', `${hHeight}px`);
-    document.documentElement.style.setProperty('--footer-height', `${fHeight}px`);
+        // Set CSS vars
+        document.documentElement.style.setProperty("--vh", `${vh * 0.01}px`);
+        document.documentElement.style.setProperty(
+          "--header-height",
+          `${hHeight}px`
+        );
+        document.documentElement.style.setProperty(
+          "--footer-height",
+          `${fHeight}px`
+        );
 
-    // Set container and products height (mobile/desktop switch)
-    const isDesktop = window.innerWidth >= 768;
-    const container = isDesktop ? document.querySelector('.desktop-container') : document.querySelector('.container-product');
-    const otherContainer = isDesktop ? document.querySelector('.container-product') : document.querySelector('.desktop-container');
-    const extraForLast = 75; // Padding for last product
-    if (container) {
-      container.style.display = 'flex';
-      container.style.height = `${availHeight + extraForLast}px`; // Extra space for last product's padding
-    }
-    if (otherContainer) otherContainer.style.display = 'none';
+        // Set container and products height (mobile/desktop switch)
+        const isDesktop = window.innerWidth >= 768;
+        const container = isDesktop
+          ? document.querySelector(".desktop-container")
+          : document.querySelector(".container-product");
+        const otherContainer = isDesktop
+          ? document.querySelector(".container-product")
+          : document.querySelector(".desktop-container");
+        if (container) {
+          container.style.display = "flex";
+          container.style.height = `${availHeight}px`;
+        }
+        if (otherContainer) otherContainer.style.display = "none";
 
-    // Set each product height (extra for last to accommodate padding)
-    const products = document.querySelectorAll('.single-product, .desktop-single-product');
-    products.forEach((p, index) => {
-      const isLast = index === products.length - 1;
-      p.style.height = `${availHeight + (isLast ? extraForLast : 0)}px`;
-    });
+        // Set each product height
+        document
+          .querySelectorAll(".single-product, .desktop-single-product")
+          .forEach((p) => {
+            p.style.height = `${availHeight}px`;
+          });
 
-    // Snap to first (or adjust if already at last)
-    if (container) {
-      const currentScroll = container.scrollTop;
-      const productHeight = availHeight; // Approx height per product
-      const lastProductTop = (products.length - 1) * productHeight;
-      if (Math.abs(currentScroll - lastProductTop) < 50) { // If near last, ensure full visibility
-        container.scrollTop = lastProductTop;
-      } else {
-        container.scrollTop = 0;
+        // Snap to first
+        if (container) container.scrollTop = 0;
       }
-    }
-  }
 
-  // Throttled scroll handler
-  let scrollThrottle;
-  const handleScroll = () => {
-    if (scrollThrottle) clearTimeout(scrollThrottle);
-    scrollThrottle = setTimeout(setHeights, 100);
-  };
-
-  // Debounced resize handler
-  let resizeTimeout;
-  const handleResize = () => {
-    if (resizeTimeout) cancelAnimationFrame(resizeTimeout);
-    resizeTimeout = requestAnimationFrame(setHeights);
-  };
-
-  // Event Listeners
-  window.addEventListener('load', setHeights);
-  window.addEventListener('resize', handleResize);
-  window.addEventListener('orientationchange', handleResize);
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  if (window.visualViewport) window.visualViewport.addEventListener('resize', handleResize);
-
-  // Quantity Controls
-  function initQuantityControls() {
-    document.querySelectorAll('.single-product, .desktop-single-product').forEach(container => {
-      const dec = container.querySelector('.decrement');
-      const inc = container.querySelector('.increment');
-      const qty = container.querySelector('.quantity-value');
-      if (!dec || !inc || !qty) return;
-      let count = 0;
-      inc.addEventListener('click', () => { count++; qty.textContent = count; });
-      dec.addEventListener('click', () => { if (count > 0) { count--; qty.textContent = count; } });
-    });
-  }
-
-  // Sliders
-  function initSliders() {
-    document.querySelectorAll('.related-wrapper').forEach(wrapper => {
-      const slider = wrapper.querySelector('.related-products');
-      const items = slider?.querySelectorAll('.related-item') || [];
-      const left = wrapper.querySelector('.fa-chevron-left');
-      const right = wrapper.querySelector('.fa-chevron-right');
-      if (items.length === 0 || !left || !right) return;
-      let idx = 0;
-      const scrollToItem = i => {
-        idx = Math.max(0, Math.min(i, items.length - 1));
-        items[idx].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      // Throttled scroll handler
+      let scrollThrottle;
+      const handleScroll = () => {
+        if (scrollThrottle) clearTimeout(scrollThrottle);
+        scrollThrottle = setTimeout(setHeights, 100);
       };
-      left.addEventListener('click', () => scrollToItem(idx - 1));
-      right.addEventListener('click', () => scrollToItem(idx + 1));
-    });
-  }
 
-  // Init
-  document.addEventListener('DOMContentLoaded', () => {
-    initQuantityControls();
-    initSliders();
-    setHeights();
-  });
-</script>
+      // Debounced resize handler
+      let resizeTimeout;
+      const handleResize = () => {
+        if (resizeTimeout) cancelAnimationFrame(resizeTimeout);
+        resizeTimeout = requestAnimationFrame(setHeights);
+      };
 
+      // Event Listeners
+      window.addEventListener("load", setHeights);
+      window.addEventListener("resize", handleResize);
+      window.addEventListener("orientationchange", handleResize);
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      if (window.visualViewport)
+        window.visualViewport.addEventListener("resize", handleResize);
+
+      // Quantity Controls
+      function initQuantityControls() {
+        document
+          .querySelectorAll(".single-product, .desktop-single-product")
+          .forEach((container) => {
+            const dec = container.querySelector(".decrement");
+            const inc = container.querySelector(".increment");
+            const qty = container.querySelector(".quantity-value");
+            if (!dec || !inc || !qty) return;
+            let count = 0;
+            inc.addEventListener("click", () => {
+              count++;
+              qty.textContent = count;
+            });
+            dec.addEventListener("click", () => {
+              if (count > 0) {
+                count--;
+                qty.textContent = count;
+              }
+            });
+          });
+      }
+
+      // Sliders
+      function initSliders() {
+        document.querySelectorAll(".related-wrapper").forEach((wrapper) => {
+          const slider = wrapper.querySelector(".related-products");
+          const items = slider?.querySelectorAll(".related-item") || [];
+          const left = wrapper.querySelector(".fa-chevron-left");
+          const right = wrapper.querySelector(".fa-chevron-right");
+          if (items.length === 0 || !left || !right) return;
+          let idx = 0;
+          const scrollToItem = (i) => {
+            idx = Math.max(0, Math.min(i, items.length - 1));
+            items[idx].scrollIntoView({
+              behavior: "smooth",
+              inline: "start",
+              block: "nearest",
+            });
+          };
+          left.addEventListener("click", () => scrollToItem(idx - 1));
+          right.addEventListener("click", () => scrollToItem(idx + 1));
+        });
+      }
+
+      // Init
+      document.addEventListener("DOMContentLoaded", () => {
+        initQuantityControls();
+        initSliders();
+        setHeights();
+      });
+    </script>
   </body>
 </html>
