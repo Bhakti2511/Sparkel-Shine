@@ -471,6 +471,9 @@ header {
       align-items: center;
       position: relative;
     }
+      &:last-child {
+      padding-bottom: 75px;
+    }
 
     .product-img {
       width: 100%;
