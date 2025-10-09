@@ -467,7 +467,7 @@
     const footer = document.querySelector('.bottom-nav');
     const hHeight = header?.offsetHeight || 0;
     const fHeight = footer?.offsetHeight || 0;
-    const availHeight = vh - hHeight - fHeight;
+    const availHeight = vh - hHeight - fHeight - 75;
 
     // Set body padding for fixed elements
     document.body.style.paddingTop = `${hHeight}px`;
