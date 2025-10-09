@@ -621,7 +621,7 @@
     const footer = document.querySelector('.bottom-nav');
     const hHeight = header?.offsetHeight || 0;
     const fHeight = footer?.offsetHeight || 0;
-    const availHeight = vh - hHeight - fHeight;
+    const availHeight = vh - hHeight - fHeight; // Removed -75; now add it only for last product/container
 
     // Set body padding for fixed elements
     document.body.style.paddingTop = `${hHeight}px`;
@@ -636,19 +636,31 @@
     const isDesktop = window.innerWidth >= 768;
     const container = isDesktop ? document.querySelector('.desktop-container') : document.querySelector('.container-product');
     const otherContainer = isDesktop ? document.querySelector('.container-product') : document.querySelector('.desktop-container');
+    const extraForLast = 75; // Padding for last product
     if (container) {
       container.style.display = 'flex';
-      container.style.height = `${availHeight}px`;
+      container.style.height = `${availHeight + extraForLast}px`; // Extra space for last product's padding
     }
     if (otherContainer) otherContainer.style.display = 'none';
 
-    // Set each product height
-    document.querySelectorAll('.single-product, .desktop-single-product').forEach(p => {
-      p.style.height = `${availHeight}px`;
+    // Set each product height (extra for last to accommodate padding)
+    const products = document.querySelectorAll('.single-product, .desktop-single-product');
+    products.forEach((p, index) => {
+      const isLast = index === products.length - 1;
+      p.style.height = `${availHeight + (isLast ? extraForLast : 0)}px`;
     });
 
-    // Snap to first
-    if (container) container.scrollTop = 0;
+    // Snap to first (or adjust if already at last)
+    if (container) {
+      const currentScroll = container.scrollTop;
+      const productHeight = availHeight; // Approx height per product
+      const lastProductTop = (products.length - 1) * productHeight;
+      if (Math.abs(currentScroll - lastProductTop) < 50) { // If near last, ensure full visibility
+        container.scrollTop = lastProductTop;
+      } else {
+        container.scrollTop = 0;
+      }
+    }
   }
 
   // Throttled scroll handler
@@ -710,5 +722,6 @@
     setHeights();
   });
 </script>
+
   </body>
 </html>
