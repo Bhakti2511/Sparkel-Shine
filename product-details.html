@@ -460,121 +460,170 @@
     </div>
 
         <script>
-      // Enhanced Dynamic Viewport Height Calculation
-      function setVH() {
-        let vh;
-        if (window.visualViewport) {
-          vh = window.visualViewport.height * 0.01;
-        } else {
-          vh = window.innerHeight * 0.01;
-        }
-        document.documentElement.style.setProperty("--vh", `${vh}px`);
+  // Enhanced Dynamic Viewport and Height Calculation
+  function setHeights() {
+    let viewportHeight;
+    if (window.visualViewport) {
+      viewportHeight = window.visualViewport.height;
+    } else {
+      viewportHeight = window.innerHeight;
+    }
 
-        const header = document.querySelector("header");
-        const footer = document.querySelector(".bottom-nav");
-        if (header) {
-          document.documentElement.style.setProperty(
-            "--header-height",
-            `${header.offsetHeight}px`
-          );
-        }
-        if (footer) {
-          document.documentElement.style.setProperty(
-            "--footer-height",
-            `${footer.offsetHeight}px`
-          );
-        }
+    const header = document.querySelector('header');
+    const footer = document.querySelector('.bottom-nav');
+    const headerHeight = header ? header.offsetHeight : 0;
+    const footerHeight = footer ? footer.offsetHeight : 0;
+    const availableHeight = viewportHeight - headerHeight - footerHeight;
+
+    console.log(`Viewport: ${viewportHeight}px, Header: ${headerHeight}px, Footer: ${footerHeight}px, Available: ${availableHeight}px`); // Debug log
+
+    // Set body padding to reserve space for fixed header/footer
+    if (header) {
+      document.body.style.paddingTop = `${headerHeight}px`;
+    }
+    if (footer) {
+      document.body.style.paddingBottom = `${footerHeight}px`;
+    }
+
+    // Set custom CSS vars for fallback
+    document.documentElement.style.setProperty('--vh', `${viewportHeight * 0.01}px`);
+    document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+    document.documentElement.style.setProperty('--footer-height', `${footerHeight}px`);
+
+    // Set container height to exact pixels
+    let container;
+    if (window.innerWidth >= 768) {
+      // Desktop
+      container = document.querySelector('.desktop-container');
+      if (container) {
+        container.style.display = 'flex';
+        container.style.height = `${availableHeight}px`;
       }
+      document.querySelector('.container-product').style.display = 'none';
+    } else {
+      // Mobile
+      container = document.querySelector('.container-product');
+      if (container) {
+        container.style.display = 'flex';
+        container.style.height = `${availableHeight}px`;
+      }
+      document.querySelector('.desktop-container').style.display = 'none';
+    }
 
-      let resizeTimeout;
-      function handleResize() {
-        if (resizeTimeout) {
-          cancelAnimationFrame(resizeTimeout);
+    // Set each single-product height to exact pixels (prevents peeking)
+    const products = document.querySelectorAll('.single-product, .desktop-single-product');
+    products.forEach((product) => {
+      product.style.height = `${availableHeight}px`;
+    });
+
+    // Initial scroll to top and snap to first product
+    if (container) {
+      container.scrollTop = 0;
+      container.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }
+
+  // Throttled handler for scroll (recalc if viewport changes mid-scroll)
+  let scrollThrottle;
+  function handleScroll() {
+    if (scrollThrottle) {
+      clearTimeout(scrollThrottle);
+    }
+    scrollThrottle = setTimeout(setHeights, 100); // 100ms throttle
+  }
+
+  // Debounced resize/orientation handler
+  let resizeTimeout;
+  function handleResize() {
+    if (resizeTimeout) {
+      cancelAnimationFrame(resizeTimeout);
+    }
+    resizeTimeout = requestAnimationFrame(setHeights);
+  }
+
+  // Initialize on load and add event listeners
+  window.addEventListener('load', setHeights);
+  window.addEventListener('resize', handleResize);
+  window.addEventListener('orientationchange', handleResize);
+  window.addEventListener('scroll', handleScroll, { passive: true }); // Passive for performance
+
+  // VisualViewport support for dynamic changes (e.g., address bar hide/show on Android)
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', handleResize);
+  }
+
+  // Quantity Controls: Handle multiple products independently
+  function initQuantityControls() {
+    const productContainers = document.querySelectorAll('.single-product, .desktop-single-product');
+    
+    productContainers.forEach((container) => {
+      const decrementBtn = container.querySelector('.decrement');
+      const incrementBtn = container.querySelector('.increment');
+      const quantitySpan = container.querySelector('.quantity-value');
+      
+      if (!decrementBtn || !incrementBtn || !quantitySpan) return;
+      
+      let count = parseInt(quantitySpan.textContent) || 0; // Initialize from existing value
+      
+      incrementBtn.addEventListener('click', () => {
+        count++;
+        quantitySpan.textContent = count;
+      });
+      
+      decrementBtn.addEventListener('click', () => {
+        if (count > 0) {
+          count--;
+          quantitySpan.textContent = count;
         }
-        resizeTimeout = requestAnimationFrame(setVH);
-      }
+      });
+    });
+  }
 
-      window.addEventListener("load", setVH);
-      window.addEventListener("resize", handleResize);
-      window.addEventListener("orientationchange", handleResize);
-
-      if (window.visualViewport) {
-        window.visualViewport.addEventListener("resize", handleResize);
-      }
-
-      function initQuantityControls() {
-        const productContainers = document.querySelectorAll(
-          ".single-product, .desktop-single-product"
-        );
-
-        productContainers.forEach((container) => {
-          const decrementBtn = container.querySelector(".decrement");
-          const incrementBtn = container.querySelector(".increment");
-          const quantitySpan = container.querySelector(".quantity-value");
-
-          if (!decrementBtn || !incrementBtn || !quantitySpan) return; 
-
-          let count = 0; 
-
-          incrementBtn.addEventListener("click", () => {
-            count++;
-            quantitySpan.textContent = count;
-          });
-
-          decrementBtn.addEventListener("click", () => {
-            if (count > 0) {
-              count--;
-              quantitySpan.textContent = count;
-            }
-          });
+  // Related Products Slider: Handle multiple sliders
+  function initSliders() {
+    const wrappers = document.querySelectorAll('.related-wrapper');
+    
+    wrappers.forEach((wrapper) => {
+      const slider = wrapper.querySelector('.related-products');
+      const items = slider ? slider.querySelectorAll('.related-item') : [];
+      const leftArrow = wrapper.querySelector('.fa-chevron-left');
+      const rightArrow = wrapper.querySelector('.fa-chevron-right');
+      
+      if (!slider || items.length === 0 || !leftArrow || !rightArrow) return;
+      
+      let currentIndex = 0;
+      
+      function scrollToItem(index) {
+        if (index < 0) index = 0;
+        if (index >= items.length) index = items.length - 1;
+        
+        currentIndex = index;
+        items[currentIndex].scrollIntoView({
+          behavior: 'smooth',
+          inline: 'start',
+          block: 'nearest',
         });
       }
+      
+      leftArrow.addEventListener('click', () => scrollToItem(currentIndex - 1));
+      rightArrow.addEventListener('click', () => scrollToItem(currentIndex + 1));
+    });
+  }
 
-      function initSliders() {
-        const wrappers = document.querySelectorAll(".related-wrapper");
+  // Initialize features after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initQuantityControls();
+      initSliders();
+      // Trigger initial height set after a short delay for render
+      setTimeout(setHeights, 50);
+    });
+  } else {
+    initQuantityControls();
+    initSliders();
+    setHeights();
+  }
+</script>
 
-        wrappers.forEach((wrapper) => {
-          const slider = wrapper.querySelector(".related-products");
-          const items = slider ? slider.querySelectorAll(".related-item") : [];
-          const leftArrow = wrapper.querySelector(".fa-chevron-left");
-          const rightArrow = wrapper.querySelector(".fa-chevron-right");
-
-          if (!slider || items.length === 0 || !leftArrow || !rightArrow)
-            return; 
-
-          let currentIndex = 0;
-
-          function scrollToItem(index) {
-            if (index < 0) index = 0;
-            if (index >= items.length) index = items.length - 1;
-
-            currentIndex = index;
-            items[currentIndex].scrollIntoView({
-              behavior: "smooth",
-              inline: "start",
-              block: "nearest",
-            });
-          }
-
-          leftArrow.addEventListener("click", () => {
-            scrollToItem(currentIndex - 1);
-          });
-
-          rightArrow.addEventListener("click", () => {
-            scrollToItem(currentIndex + 1);
-          });
-        });
-      }
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => {
-          initQuantityControls();
-          initSliders();
-        });
-      } else {
-        initQuantityControls();
-        initSliders();
-      }
-    </script>
   </body>
 </html>
