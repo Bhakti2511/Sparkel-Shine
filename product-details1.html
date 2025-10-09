@@ -1,118 +1,517 @@
-<script>
-  // Enhanced Dynamic Viewport Height Calculation
-  function setVH() {
-    let vh;
-    if (window.visualViewport) {
-      // Use visualViewport for precise height (excludes browser UI on mobile)
-      vh = window.visualViewport.height * 0.01;
-    } else {
-      // Fallback to innerHeight
-      vh = window.innerHeight * 0.01;
-    }
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Details</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css" />
+    <style>
+      /* 430px to 730px: subtle spacing tweaks for smaller screens */
+      @media (min-width: 430px) and (max-width: 730px) {
+        .container {
+          padding: 12px;
+          margin: 0 auto;
+        }
+      }
+    </style>
+  </head>
+  
+  <body>
+    <!-- Header -->
+    <header>
+      <i class="fa-thin fa-arrow-left"></i>
+      <h2>Product-details</h2>
+      <div class="right-icons">
+        <i class="fa-thin fa-sliders-h"></i>
+        <i class="fa-thin fa-th-large"></i>
+        <i class="fa-thin fa-bars"></i>
+      </div>
+    </header>
 
-    // Dynamically measure and set header/footer heights
-    const header = document.querySelector('header');
-    const footer = document.querySelector('.bottom-nav');
-    if (header) {
-      document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`);
-    }
-    if (footer) {
-      document.documentElement.style.setProperty('--footer-height', `${footer.offsetHeight}px`);
-    }
-  }
+    <!-- Product Image -->
+    <div class="container-product">
+      <div class="single-product">
+        <div style="position: relative">
+          <img
+            src="product-list-img/img10.png"
+            alt="Product"
+            class="product-img" />
+          <div class="side-icons">
+            <i class="fa-thin fa-share-alt"></i>
+            <i class="fa-thin fa-chevron-up"></i>
+            <i class="fa-thin fa-chevron-down"></i>
+          </div>
+        </div>
 
-  // Debounced resize handler using requestAnimationFrame
-  let resizeTimeout;
-  function handleResize() {
-    if (resizeTimeout) {
-      cancelAnimationFrame(resizeTimeout);
-    }
-    resizeTimeout = requestAnimationFrame(setVH);
-  }
+        <!-- Content -->
+        <div class="product-content">
+          <div class="description text">Description</div>
 
-  // Initialize on load and add event listeners
-  window.addEventListener('load', setVH);
-  window.addEventListener('resize', handleResize);
-  window.addEventListener('orientationchange', handleResize);
+          <!-- Related Products -->
+          <div class="related-wrapper">
+            <i class="fa-thin fa-chevron-left" id="leftArrow"></i>
 
-  // VisualViewport support (for dynamic changes on mobile, e.g., S22 Ultra)
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', handleResize);
-  }
+            <div class="related-products" id="relatedSlider">
+              <div class="related-item">
+                <img src="product-list-img/img11.png" alt="Red2-10" />
+                <div class="text">img 1</div>
+              </div>
+              <div class="related-item">
+                <img src="product-list-img/img12.png" alt="Red2-10" />
+                <div class="text">img 2</div>
+              </div>
+              <div class="related-item related-item-border">
+                <img src="product-list-img/img13.png" alt="Red2-10" />
+                <div class="text">img 3</div>
+              </div>
+              <div class="related-item">
+                <img src="product-list-img/img14.png" alt="Red2-10" />
+                <div class="text">img 4</div>
+              </div>
+              <div class="related-item">
+                <img src="product-list-img/img5.png" alt="Red2-10" />
+                <div class="text">img 5</div>
+              </div>
+              <div class="related-item">
+                <img src="product-list-img/img6.png" alt="Red2-10" />
+                <div class="text">img 6</div>
+              </div>
+              <div class="related-item">
+                <img src="product-list-img/img1.png" alt="Red2-10" />
+                <div class="text">img 7</div>
+              </div>
+            </div>
 
-  // Quantity Controls: Handle multiple products independently
-  function initQuantityControls() {
-    const productContainers = document.querySelectorAll('.single-product, .desktop-single-product');
-    
-    productContainers.forEach((container) => {
-      const decrementBtn = container.querySelector('.decrement');
-      const incrementBtn = container.querySelector('.increment');
-      const quantitySpan = container.querySelector('.quantity-value');
-      
-      if (!decrementBtn || !incrementBtn || !quantitySpan) return; // Skip if elements missing
-      
-      let count = 0; // Independent count per product
-      
-      incrementBtn.addEventListener('click', () => {
+            <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
+          </div>
+
+          <!-- Price Section -->
+          <div class="price-section">
+            <div>
+              <div class="old-price text">₹5.00 / pair</div>
+              <div class="text">₹240.00 / pair</div>
+            </div>
+            <div class="quantity">
+              <button id="decrement">-</button>
+              <span id="quantity">0</span>
+              <button id="increment">+</button>
+            </div>
+            <div class="text">12 Pair / box</div>
+          </div>
+
+          <!-- Order Controls -->
+          <div class="order-controls">
+            <div class="text">Order Qty: 50</div>
+            <div class="text">Stock: 15 / 369</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="single-product">
+        <div style="position: relative">
+          <img
+            src="product-list-img/img5.png"
+            alt="Product"
+            class="product-img" />
+          <div class="side-icons">
+            <i class="fa-thin fa-share-alt"></i>
+            <i class="fa-thin fa-chevron-up"></i>
+            <i class="fa-thin fa-chevron-down"></i>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="product-content">
+          <div class="description text">Description</div>
+
+          <!-- Related Products -->
+          <div class="related-wrapper">
+            <i class="fa-thin fa-chevron-left" id="leftArrow"></i>
+
+            <div class="related-products" id="relatedSlider">
+              <div class="related-item">
+                <img src="product-list-img/img11.png" alt="Red2-10" />
+                <div class="text">img 1</div>
+              </div>
+              <div class="related-item related-item-border">
+                <img src="product-list-img/img12.png" alt="Red2-10" />
+                <div class="text">img 2</div>
+              </div>
+              <div class="related-item">
+                <img src="product-list-img/img13.png" alt="Red2-10" />
+                <div class="text">img 3</div>
+              </div>
+              <div class="related-item">
+                <img src="product-list-img/img14.png" alt="Red2-10" />
+                <div class="text">img 4</div>
+              </div>
+              <div class="related-item">
+                <img src="product-list-img/img5.png" alt="Red2-10" />
+                <div class="text">img 5</div>
+              </div>
+              <div class="related-item">
+                <img src="product-list-img/img6.png" alt="Red2-10" />
+                <div class="text">img 6</div>
+              </div>
+            </div>
+
+            <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
+          </div>
+
+          <!-- Price Section -->
+          <div class="price-section">
+            <div>
+              <div class="old-price text">₹5.00 / pair</div>
+              <div class="text">₹240.00 / pair</div>
+            </div>
+            <div class="quantity">
+              <button id="decrement">-</button>
+              <span id="quantity">0</span>
+              <button id="increment">+</button>
+            </div>
+            <div class="text">12 Pair / box</div>
+          </div>
+
+          <!-- Order Controls -->
+          <div class="order-controls">
+            <div class="text">Order Qty: 50</div>
+            <div class="text">Stock: 15 / 369</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="single-product">
+        <div style="position: relative">
+          <img
+            src="product-list-img/img6.png"
+            alt="Product"
+            class="product-img" />
+          <div class="side-icons">
+            <i class="fa-thin fa-share-alt"></i>
+            <i class="fa-thin fa-chevron-up"></i>
+            <i class="fa-thin fa-chevron-down"></i>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="product-content">
+          <div class="description text">Description</div>
+
+          <!-- Related Products -->
+          <div class="related-wrapper">
+            <i class="fa-thin fa-chevron-left" id="leftArrow"></i>
+
+            <div class="related-products" id="relatedSlider">
+              <div class="related-item">
+                <img src="product-list-img/img11.png" alt="Red2-10" />
+                <div class="text">img 1</div>
+              </div>
+              <div class="related-item">
+                <img src="product-list-img/img12.png" alt="Red2-10" />
+                <div class="text">img 2</div>
+              </div>
+              <div class="related-item">
+                <img src="product-list-img/img13.png" alt="Red2-10" />
+                <div class="text">img 3</div>
+              </div>
+              <div class="related-item">
+                <img src="product-list-img/img14.png" alt="Red2-10" />
+                <div class="text">img 4</div>
+              </div>
+              <div class="related-item">
+                <img src="product-list-img/img5.png" alt="Red2-10" />
+                <div class="text">img 5</div>
+              </div>
+              <div class="related-item">
+                <img src="product-list-img/img6.png" alt="Red2-10" />
+                <div class="text">img 6</div>
+              </div>
+              <div class="related-item related-item-border">
+                <img src="product-list-img/img1.png" alt="Red2-10" />
+                <div class="text">img 7</div>
+              </div>
+            </div>
+
+            <i class="fa-thin fa-chevron-right" id="rightArrow"></i>
+          </div>
+
+          <!-- Price Section -->
+          <div class="price-section">
+            <div>
+              <div class="old-price text">₹5.00 / pair</div>
+              <div class="text">₹240.00 / pair</div>
+            </div>
+            <div class="quantity">
+              <button id="decrement">-</button>
+              <span id="quantity">0</span>
+              <button id="increment">+</button>
+            </div>
+            <div class="text">12 Pair / box</div>
+          </div>
+
+          <!-- Order Controls -->
+          <div class="order-controls">
+            <div class="text">Order Qty: 50</div>
+            <div class="text">Stock: 15 / 369</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop Product img -->
+    <div class="desktop-container">
+      <div class="single-product">
+        <div class="desktop-single-product">
+          <!-- Left Column -->
+          <div class="left-column">
+            <img src="product-list-img/img12.png" class="product-img" />
+          </div>
+
+          <!-- Right Column -->
+          <div class="right-column">
+            <div class="description text">Description</div>
+            <div class="price-section">
+              <div>
+                <div class="old-price text">₹5.00 / pair</div>
+                <div class="text">₹240.00 / pair</div>
+              </div>
+              <div class="quantity">
+                <button id="decrement">-</button>
+                <span id="quantity">0</span>
+                <button id="increment">+</button>
+              </div>
+              <div class="text">12 Pair / box</div>
+            </div>
+            <div class="order-controls">
+              <div class="text">Order Qty: 50</div>
+              <div class="text">Stock: 15 / 369</div>
+            </div>
+            <div class="related-wrapper">
+              <div class="related-products" id="relatedSlider">
+                <div class="related-item">
+                  <img src="product-list-img/img1.png" alt="Red2-10" />
+                  <div class="text">img 1</div>
+                </div>
+                <div class="related-item">
+                  <img src="product-list-img/img2.png" alt="Red2-10" />
+                  <div class="text">img 2</div>
+                </div>
+                <div class="related-item related-item-border">
+                  <img src="product-list-img/img3.png" alt="Red2-10" />
+                  <div class="text">img 3</div>
+                </div>
+                <div class="related-item">
+                  <img src="product-list-img/img4.png" alt="Red2-10" />
+                  <div class="text">img 4</div>
+                </div>
+                <div class="related-item">
+                  <img src="product-list-img/img15.png" alt="Red2-10" />
+                  <div class="text">img 5</div>
+                </div>
+                <div class="related-item">
+                  <img src="product-list-img/img16.png" alt="Red2-10" />
+                  <div class="text">img 6</div>
+                </div>
+                <div class="related-item">
+                  <img src="product-list-img/img17.png" alt="Red2-10" />
+                  <div class="text">img 7</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="single-product">
+        <div class="desktop-single-product">
+          <!-- Left Column -->
+          <div class="left-column">
+            <img src="product-list-img/img20.png" class="product-img" />
+          </div>
+
+          <!-- Right Column -->
+          <div class="right-column">
+            <div class="description text">Description</div>
+            <div class="price-section">
+              <div>
+                <div class="old-price text">₹5.00 / pair</div>
+                <div class="text">₹240.00 / pair</div>
+              </div>
+              <div class="quantity">
+                <button id="decrement">-</button>
+                <span id="quantity">0</span>
+                <button id="increment">+</button>
+              </div>
+              <div class="text">12 Pair / box</div>
+            </div>
+            <div class="order-controls">
+              <div class="text">Order Qty: 50</div>
+              <div class="text">Stock: 15 / 369</div>
+            </div>
+            <div class="related-wrapper">
+              <div class="related-products" id="relatedSlider">
+                <div class="related-item">
+                  <img src="product-list-img/img1.png" alt="Red2-10" />
+                  <div class="text">img 1</div>
+                </div>
+                <div class="related-item">
+                  <img src="product-list-img/img12.png" alt="Red2-10" />
+                  <div class="text">img 2</div>
+                </div>
+                <div class="related-item related-item-border">
+                  <img src="product-list-img/img3.png" alt="Red2-10" />
+                  <div class="text">img 3</div>
+                </div>
+                <div class="related-item">
+                  <img src="product-list-img/img14.png" alt="Red2-10" />
+                  <div class="text">img 4</div>
+                </div>
+                <div class="related-item">
+                  <img src="product-list-img/img15.png" alt="Red2-10" />
+                  <div class="text">img 5</div>
+                </div>
+                <div class="related-item">
+                  <img src="product-list-img/img6.png" alt="Red2-10" />
+                  <div class="text">img 6</div>
+                </div>
+                <div class="related-item">
+                  <img src="product-list-img/img19.png" alt="Red2-10" />
+                  <div class="text">img 7</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="single-product">
+        <div class="desktop-single-product">
+          <!-- Left Column -->
+          <div class="left-column">
+            <img src="product-list-img/img15.png" class="product-img" />
+          </div>
+
+          <!-- Right Column -->
+          <div class="right-column">
+            <div class="description text">Description</div>
+            <div class="price-section">
+              <div>
+                <div class="old-price text">₹5.00 / pair</div>
+                <div class="text">₹240.00 / pair</div>
+              </div>
+              <div class="quantity">
+                <button id="decrement">-</button>
+                <span id="quantity">0</span>
+                <button id="increment">+</button>
+              </div>
+              <div class="text">12 Pair / box</div>
+            </div>
+            <div class="order-controls">
+              <div class="text">Order Qty: 50</div>
+              <div class="text">Stock: 15 / 369</div>
+            </div>
+            <div class="related-wrapper">
+              <div class="related-products" id="relatedSlider">
+                <div class="related-item">
+                  <img src="product-list-img/img8.png" alt="Red2-10" />
+                  <div class="text">img 1</div>
+                </div>
+                <div class="related-item">
+                  <img src="product-list-img/img7.png" alt="Red2-10" />
+                  <div class="text">img 2</div>
+                </div>
+                <div class="related-item related-item-border">
+                  <img src="product-list-img/img6.png" alt="Red2-10" />
+                  <div class="text">img 3</div>
+                </div>
+                <div class="related-item">
+                  <img src="product-list-img/img5.png" alt="Red2-10" />
+                  <div class="text">img 4</div>
+                </div>
+                <div class="related-item">
+                  <img src="product-list-img/img19.png" alt="Red2-10" />
+                  <div class="text">img 5</div>
+                </div>
+                <div class="related-item">
+                  <img src="product-list-img/img21.png" alt="Red2-10" />
+                  <div class="text">img 6</div>
+                </div>
+                <div class="related-item">
+                  <img src="product-list-img/img12.png" alt="Red2-10" />
+                  <div class="text">img 7</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+      <i class="fa-thin fa-house"></i>
+      <i class="fa-thin fa-shopping-cart"></i>
+      <i class="fa-thin fa-video"></i>
+      <i class="fa-thin fa-share-alt"></i>
+      <i class="fa-thin fa-magnifying-glass"></i>
+    </div>
+
+    <script>
+      function setVH() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty("--vh", `${vh}px`);
+      }
+      setVH();
+      window.addEventListener("resize", setVH);
+
+      const incrementBtn = document.getElementById("increment");
+      const decrementBtn = document.getElementById("decrement");
+      const quantitySpan = document.getElementById("quantity");
+
+      let count = 0;
+
+      incrementBtn.addEventListener("click", () => {
         count++;
         quantitySpan.textContent = count;
       });
-      
-      decrementBtn.addEventListener('click', () => {
+
+      decrementBtn.addEventListener("click", () => {
         if (count > 0) {
           count--;
           quantitySpan.textContent = count;
         }
       });
-    });
-  }
 
-  // Related Products Slider: Handle multiple sliders
-  function initSliders() {
-    const wrappers = document.querySelectorAll('.related-wrapper');
-    
-    wrappers.forEach((wrapper) => {
-      const slider = wrapper.querySelector('.related-products');
-      const items = slider ? slider.querySelectorAll('.related-item') : [];
-      const leftArrow = wrapper.querySelector('.fa-chevron-left');
-      const rightArrow = wrapper.querySelector('.fa-chevron-right');
-      
-      if (!slider || items.length === 0 || !leftArrow || !rightArrow) return; // Skip if incomplete
-      
-      let currentIndex = 0;
-      
-      function scrollToItem(index) {
-        if (index < 0) index = 0;
-        if (index >= items.length) index = items.length - 1;
-        
-        currentIndex = index;
-        items[currentIndex].scrollIntoView({
-          behavior: 'smooth',
-          inline: 'start',
-          block: 'nearest',
+      document.querySelectorAll(".related-wrapper").forEach((wrapper) => {
+        const slider = wrapper.querySelector(".related-products");
+        const items = slider.querySelectorAll(".related-item");
+        const leftArrow = wrapper.querySelector(".fa-chevron-left");
+        const rightArrow = wrapper.querySelector(".fa-chevron-right");
+
+        let currentIndex = 0;
+
+        function scrollToItem(index) {
+          if (index >= 0 && index < items.length) {
+            currentIndex = index;
+            items[currentIndex].scrollIntoView({
+              behavior: "smooth",
+              inline: "start",
+              block: "nearest",
+            });
+          }
+        }
+
+        leftArrow.addEventListener("click", () => {
+          scrollToItem(currentIndex - 1);
         });
-      }
-      
-      leftArrow.addEventListener('click', () => {
-        scrollToItem(currentIndex - 1);
-      });
-      
-      rightArrow.addEventListener('click', () => {
-        scrollToItem(currentIndex + 1);
-      });
-    });
-  }
 
-  // Initialize everything after DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      initQuantityControls();
-      initSliders();
-    });
-  } else {
-    // Already loaded
-    initQuantityControls();
-    initSliders();
-  }
-</script>
+        rightArrow.addEventListener("click", () => {
+          scrollToItem(currentIndex + 1);
+        });
+      });
+    </script>
+  </body>
+</html>
