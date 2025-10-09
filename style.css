@@ -446,7 +446,7 @@ header {
   gap: 10px;
   display: flex;
   flex-direction: column;
-  padding-bottom: 65px;
+  padding-bottom: 0px;
   background: rgba(0, 0, 0, 0.7);
     overflow-y: scroll;
   scroll-snap-type: y mandatory;
