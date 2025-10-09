@@ -450,8 +450,6 @@ header {
   background: rgba(0, 0, 0, 0.7);
     overflow-y: scroll;
   scroll-snap-type: y mandatory;
-    overscroll-behavior: contain y; 
- will-change: scroll-position;
   scroll-behavior: smooth;
 
   .single-product {
@@ -506,7 +504,6 @@ header {
       justify-content: flex-start;
       background: #000;
       overflow-y: auto;
-      position: relative;
 
       .description {
         text-align: center;
