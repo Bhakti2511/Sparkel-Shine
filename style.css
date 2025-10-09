@@ -458,7 +458,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
     scroll-snap-stop: always;
     box-sizing: border-box;
 
