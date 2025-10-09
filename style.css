@@ -498,8 +498,8 @@ header {
     }
 
     .product-content {
-      flex: 0 0 40vh;
-      height:40vh;
+      flex: 0 0 30vh;
+      height:30vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
