@@ -477,6 +477,7 @@ header {
     .product-img {
       width: 100%;
       min-height: 50%;
+      max-height:80%;
       object-fit: contain;
       border-radius: 8px;
     }
