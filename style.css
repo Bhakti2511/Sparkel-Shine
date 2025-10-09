@@ -310,6 +310,7 @@ header {
   .grid {
     column-count: 2;
     gap: 16px;
+    padding-bottom:30px;
 
     .item {
       display: inline-block;
