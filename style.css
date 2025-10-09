@@ -441,27 +441,30 @@ header {
 .container-product {
   position: relative;
   width: 100%;
-  height: calc(var(--vh, 1vh) * 100 - var(--header-height) - var(--footer-height));
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  flex: 1 auto;
+  height: 100%;
+  flex: 1;
   gap: 10px;
   display: flex;
   flex-direction: column;
   padding-bottom: 65px;
   background: rgba(0, 0, 0, 0.7);
+    overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 
   .single-product {
-    height: calc( var(--vh, 1vh) * 100 - var(--header-height) - var(--footer-height));
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     scroll-snap-align: start;
+    scroll-snap-stop: always;
     box-sizing: border-box;
 
     > div:first-child {
       flex: 1 1 auto;
-      min-height: 12.5rem;
+      min-height: 40%
       max-height: 65vh;
       display: flex;
       justify-content: center;
@@ -492,11 +495,13 @@ header {
     }
 
     .product-content {
-      flex: 0 0 auto;
+      flex: 0 0 40vh;
+      height:40vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       background: #000;
+      overflow-y: auto;
 
       .description {
         text-align: center;
