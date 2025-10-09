@@ -576,23 +576,14 @@ header {
             }
           }
 
-          .fa-chevron-left,
-          .fa-chevron-right {
+          #leftArrow,
+          #rightArrow {
             backdrop-filter: blur(5px);
             padding: 5px 8px;
             border-radius: 50%;
             cursor: pointer;
             z-index: 5;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            &.fa-chevron-left {
-              left: 0.5rem;
-            }
-            &.fa-chevron-right {
-              right: 0.5rem;
-            }
+            left: 0px;
           }
         }
         .related-products::-webkit-scrollbar {
