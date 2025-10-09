@@ -454,7 +454,7 @@ header {
   -webkit-overflow-scrolling: touch;
 
   .single-product {
-    height: auto;
+    height: -webkit-fill-available;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -468,7 +468,6 @@ header {
       display: flex;
       justify-content: center;
       align-items: center;
-      position: relative;
     }
 
     .product-img {
