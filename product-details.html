@@ -660,7 +660,15 @@
           });
 
         // Snap to first
-        if (container) container.scrollTop = 0;
+        if (container) {
+          const currentScroll = container.scrollTop;
+          const productHeight = availHeight; // Approx height per product
+          const lastProductTop = (products.length - 1) * productHeight;
+          if (Math.abs(currentScroll - lastProductTop) < 50) { // If near last, ensure full visibility
+            container.scrollTop = lastProductTop;
+          } else {
+            container.scrollTop = 0;
+          }
       }
 
       // Throttled scroll handler
