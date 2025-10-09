@@ -1,0 +1,118 @@
+<script>
+  // Enhanced Dynamic Viewport Height Calculation
+  function setVH() {
+    let vh;
+    if (window.visualViewport) {
+      // Use visualViewport for precise height (excludes browser UI on mobile)
+      vh = window.visualViewport.height * 0.01;
+    } else {
+      // Fallback to innerHeight
+      vh = window.innerHeight * 0.01;
+    }
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+    // Dynamically measure and set header/footer heights
+    const header = document.querySelector('header');
+    const footer = document.querySelector('.bottom-nav');
+    if (header) {
+      document.documentElement.style.setProperty('--header-height', `${header.offsetHeight}px`);
+    }
+    if (footer) {
+      document.documentElement.style.setProperty('--footer-height', `${footer.offsetHeight}px`);
+    }
+  }
+
+  // Debounced resize handler using requestAnimationFrame
+  let resizeTimeout;
+  function handleResize() {
+    if (resizeTimeout) {
+      cancelAnimationFrame(resizeTimeout);
+    }
+    resizeTimeout = requestAnimationFrame(setVH);
+  }
+
+  // Initialize on load and add event listeners
+  window.addEventListener('load', setVH);
+  window.addEventListener('resize', handleResize);
+  window.addEventListener('orientationchange', handleResize);
+
+  // VisualViewport support (for dynamic changes on mobile, e.g., S22 Ultra)
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', handleResize);
+  }
+
+  // Quantity Controls: Handle multiple products independently
+  function initQuantityControls() {
+    const productContainers = document.querySelectorAll('.single-product, .desktop-single-product');
+    
+    productContainers.forEach((container) => {
+      const decrementBtn = container.querySelector('.decrement');
+      const incrementBtn = container.querySelector('.increment');
+      const quantitySpan = container.querySelector('.quantity-value');
+      
+      if (!decrementBtn || !incrementBtn || !quantitySpan) return; // Skip if elements missing
+      
+      let count = 0; // Independent count per product
+      
+      incrementBtn.addEventListener('click', () => {
+        count++;
+        quantitySpan.textContent = count;
+      });
+      
+      decrementBtn.addEventListener('click', () => {
+        if (count > 0) {
+          count--;
+          quantitySpan.textContent = count;
+        }
+      });
+    });
+  }
+
+  // Related Products Slider: Handle multiple sliders
+  function initSliders() {
+    const wrappers = document.querySelectorAll('.related-wrapper');
+    
+    wrappers.forEach((wrapper) => {
+      const slider = wrapper.querySelector('.related-products');
+      const items = slider ? slider.querySelectorAll('.related-item') : [];
+      const leftArrow = wrapper.querySelector('.fa-chevron-left');
+      const rightArrow = wrapper.querySelector('.fa-chevron-right');
+      
+      if (!slider || items.length === 0 || !leftArrow || !rightArrow) return; // Skip if incomplete
+      
+      let currentIndex = 0;
+      
+      function scrollToItem(index) {
+        if (index < 0) index = 0;
+        if (index >= items.length) index = items.length - 1;
+        
+        currentIndex = index;
+        items[currentIndex].scrollIntoView({
+          behavior: 'smooth',
+          inline: 'start',
+          block: 'nearest',
+        });
+      }
+      
+      leftArrow.addEventListener('click', () => {
+        scrollToItem(currentIndex - 1);
+      });
+      
+      rightArrow.addEventListener('click', () => {
+        scrollToItem(currentIndex + 1);
+      });
+    });
+  }
+
+  // Initialize everything after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initQuantityControls();
+      initSliders();
+    });
+  } else {
+    // Already loaded
+    initQuantityControls();
+    initSliders();
+  }
+</script>
