@@ -454,7 +454,7 @@ header {
   -webkit-overflow-scrolling: touch;
 
   .single-product {
-    height: auto;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -495,8 +495,8 @@ header {
     }
 
     .product-content {
-      flex: 0 0 30vh;
-      height:30vh;
+      flex: 0 0 35vh;
+      height:35vh;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
