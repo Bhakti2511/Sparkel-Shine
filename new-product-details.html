@@ -7,7 +7,6 @@
     <link
       rel="stylesheet"
       href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css" />
-    
     <style>
       * {
         box-sizing: border-box;
@@ -84,13 +83,15 @@
           scroll-behavior: smooth;
           display: flex;
           flex-direction: column;
-          gap: 30px;
+          gap: 10px;
 
           .single-product {
-            height: 100vh;
+            height: 100%;
             scroll-snap-align: center;
             scroll-snap-stop: always;
             box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
 
             /* Image container: Dynamic fill */
             > div:first-child {
@@ -251,7 +252,7 @@
         <div class="single-product">
           <div style="position: relative">
             <img
-              src="product-list-img/img10.png"
+              src="product-list-img/img2.png"
               alt="Product"
               class="product-img" />
             <div class="side-icons">
