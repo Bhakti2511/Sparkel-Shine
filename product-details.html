@@ -74,6 +74,7 @@
         margin-bottom: 40px;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
+        height: 100%;
       }
       /* .container-product {
       } */
@@ -83,6 +84,10 @@
         scroll-behavior: smooth;
         display: flex;
         flex-direction: column;
+        height: 100%;
+        gap: 0;
+        overscroll-behavior: contain y;
+        -webkit-overflow-scrolling: touch;
       }
 
       .single-product {
@@ -91,6 +96,7 @@
         display: flex;
         flex-direction: column;
         border-bottom: 1px solid #222;
+        justify-content: space-between;
       }
 
       .product-img {
