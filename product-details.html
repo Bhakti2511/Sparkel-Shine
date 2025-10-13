@@ -2,7 +2,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Ensures responsive viewport on all devices -->
+    <title>Product Details</title>
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css" />
 
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
@@ -86,20 +89,33 @@
         right: 0;
         height: 30%;
         overflow-y: auto;
-        color: #333;
         display: flex;
         flex-direction: column;
         background: #000;
       }
-
 
       @media (max-height: 800px) {
         .product-content {
           height: 37%;
         }
       }
-      
+
       /* fix */
+
+      .side-icons {
+        position: absolute;
+        right: 1rem;
+        bottom: 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        i {
+          border: 1px solid #444;
+          padding: 0.6rem;
+          border-radius: 50%;
+          backdrop-filter: blur(5px);
+        }
+      }
       .description {
         text-align: center;
         color: #ccc;
@@ -515,5 +531,59 @@
         <p>Footer</p>
       </div>
     </footer>
+
+    <script>
+      // Quantity Controls
+      function initQuantityControls() {
+        document
+          .querySelectorAll(".single-product, .desktop-single-product")
+          .forEach((container) => {
+            const dec = container.querySelector(".decrement");
+            const inc = container.querySelector(".increment");
+            const qty = container.querySelector(".quantity-value");
+            if (!dec || !inc || !qty) return;
+            let count = 0;
+            inc.addEventListener("click", () => {
+              count++;
+              qty.textContent = count;
+            });
+            dec.addEventListener("click", () => {
+              if (count > 0) {
+                count--;
+                qty.textContent = count;
+              }
+            });
+          });
+      }
+
+      // Sliders
+      function initSliders() {
+        document.querySelectorAll(".related-wrapper").forEach((wrapper) => {
+          const slider = wrapper.querySelector(".related-products");
+          const items = slider?.querySelectorAll(".related-item") || [];
+          const left = wrapper.querySelector(".fa-chevron-left");
+          const right = wrapper.querySelector(".fa-chevron-right");
+          if (items.length === 0 || !left || !right) return;
+          let idx = 0;
+          const scrollToItem = (i) => {
+            idx = Math.max(0, Math.min(i, items.length - 1));
+            items[idx].scrollIntoView({
+              behavior: "smooth",
+              inline: "start",
+              block: "nearest",
+            });
+          };
+          left.addEventListener("click", () => scrollToItem(idx - 1));
+          right.addEventListener("click", () => scrollToItem(idx + 1));
+        });
+      }
+
+      // Init
+      document.addEventListener("DOMContentLoaded", () => {
+        initQuantityControls();
+        initSliders();
+        setHeights();
+      });
+    </script>
   </body>
 </html>
