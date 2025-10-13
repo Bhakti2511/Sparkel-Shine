@@ -96,28 +96,48 @@
         display: flex;
         flex-direction: column;
         border-bottom: 1px solid #222;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        height: calc(100vh - 90px);
+        min-height: calc(100vh - 90px);
+      }
+
+      .single-product > div:first-child {
+        position: relative;
+        display: flex;
       }
 
       .product-img {
         width: 100%;
         height: 100%;
         flex: 1;
-        max-height: 70vh;
+        max-height: 50vh;
         object-fit: contain;
         border-radius: 8px;
       }
 
       .product-content {
         flex: 0 0 37vh;
-        height: 40vh;
-        flex-shrink: 0;
         display: flex;
         flex-direction: column;
         background: #000;
         position: relative;
-        bottom: 0;
       }
+
+      /* media Queries */
+      @media (max-height: 750px) {
+        .product-content {
+          flex: 0 0 50vh; 
+          height: 50vh; /* Strict reduced height */
+        }
+        .product-img {
+          max-height: 50vh; 
+        }
+        .single-product > div:first-child {
+          flex: 1;
+          min-height: 30vh;
+        }
+      }
+
       /* fix css */
       .side-icons {
         position: absolute;
@@ -243,7 +263,7 @@
       <!-- <div class="container-product"> -->
       <div class="container">
         <div class="single-product">
-          <div style="position: relative; display: flex ;height: 55vh;">
+          <div>
             <img
               src="product-list-img/img2.png"
               alt="Product"
@@ -320,7 +340,7 @@
         </div>
 
         <div class="single-product">
-          <div style="position: relative; display: flex ;height: 55vh;">
+          <div>
             <img
               src="product-list-img/img5.png"
               alt="Product"
@@ -393,7 +413,7 @@
         </div>
 
         <div class="single-product">
-          <div style="position: relative; display: flex ;height: 55vh;">
+          <div>
             <img
               src="product-list-img/img6.png"
               alt="Product"
@@ -470,7 +490,7 @@
         </div>
 
         <div class="single-product">
-          <div style="position: relative; display: flex ;height: 55vh;">
+          <div>
             <img
               src="product-list-img/img3.png"
               alt="Product"
