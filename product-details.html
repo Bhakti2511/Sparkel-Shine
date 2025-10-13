@@ -6,16 +6,20 @@
 
     <style>
       * {
-        margin: 0;
-        padding: 0;
         box-sizing: border-box;
       }
-      html,
       body {
+        background-color: black;
+        color: #fff;
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        flex-direction: column;
         height: 100vh;
-        background-color: snow;
         overflow: hidden;
-        width: 100%;
+      }
+      .border {
+        border: 1px solid #d1d1d1 !important;
       }
       header,
       footer {
@@ -65,7 +69,7 @@
       .single-product > div:first-child img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         display: block;
       }
       .product-details {
@@ -88,30 +92,62 @@
       </div>
     </header>
     <main>
-      <div class="single-product" style="background-color: aquamarine">
+      <div class="single-product">
         <div>
-          <img src="product-image.png" alt="Product Image" />
+          <img
+            src="product-list-img/img2.png"
+            alt="Product"
+            class="product-img" />
+          <div class="side-icons">
+            <i class="fa-thin fa-share-alt"></i>
+            <i class="fa-thin fa-chevron-up"></i>
+            <i class="fa-thin fa-chevron-down"></i>
+          </div>
         </div>
         <div class="product-details">product Details</div>
       </div>
 
-      <div class="single-product" style="background-color: coral">
+      <div class="single-product">
         <div>
-          <img src="product-image.png" alt="Product Image" />
+          <img
+            src="product-list-img/img5.png"
+            alt="Product"
+            class="product-img" />
+          <div class="side-icons">
+            <i class="fa-thin fa-share-alt"></i>
+            <i class="fa-thin fa-chevron-up"></i>
+            <i class="fa-thin fa-chevron-down"></i>
+          </div>
         </div>
         <div class="product-details">product Details</div>
       </div>
 
-      <div class="single-product" style="background-color: aquamarine">
+      <div class="single-product">
         <div>
-          <img src="product-image.png" alt="Product Image" />
+          <img
+            src="product-list-img/img6.png"
+            alt="Product"
+            class="product-img" />
+          <div class="side-icons">
+            <i class="fa-thin fa-share-alt"></i>
+            <i class="fa-thin fa-chevron-up"></i>
+            <i class="fa-thin fa-chevron-down"></i>
+          </div>
         </div>
         <div class="product-details">product Details</div>
       </div>
 
-      <div class="single-product" style="background-color: coral">
+      <div class="single-product">
         <div>
-          <img src="product-image.png" alt="Product Image" />
+          <img
+            src="product-list-img/img3.png"
+            alt="Product"
+            class="product-img" />
+          <div class="side-icons">
+            <i class="fa-thin fa-share-alt"></i>
+            <i class="fa-thin fa-chevron-up"></i>
+            <i class="fa-thin fa-chevron-down"></i>
+          </div>
         </div>
         <div class="product-details">product Details</div>
       </div>
