@@ -84,7 +84,7 @@
         bottom: 0;
         left: 0;
         right: 0;
-        height: 33%;
+        height: 30%;
         overflow-y: auto;
         color: #333;
         display: flex;
@@ -92,6 +92,13 @@
         background: #000;
       }
 
+
+      @media (max-height: 800px) {
+        .product-content {
+          height: 37%;
+        }
+      }
+      
       /* fix */
       .description {
         text-align: center;
