@@ -21,6 +21,9 @@
         height: 100vh;
         overflow: hidden;
       }
+      .border {
+        border: 1px solid #d1d1d1 !important;
+      }
       header {
         display: flex;
         justify-content: space-between;
@@ -35,6 +38,7 @@
         h2 {
           font-size: 1.2rem;
           font-weight: 400;
+          margin: 10px;
         }
         i {
           font-size: 1.5rem;
@@ -66,176 +70,187 @@
         }
       }
 
-      .container-product {
-        position: relative;
-        width: 100%;
+      main {
         flex: 1;
+        margin-top: 50px;
+        margin-bottom: 40px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         height: 100%;
-        gap: 10px;
+      }
+      /* .container-product {
+      } */
+      .container {
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
         display: flex;
         flex-direction: column;
-        background: rgba(0, 0, 0, 0.7);
-        padding: 60px 0px 60px 0px;
+        height: 100%;
+        gap: 0;
+        overscroll-behavior: contain y;
+        -webkit-overflow-scrolling: touch;
+      }
 
-        .container {
-          overflow-y: scroll;
-          scroll-snap-type: y mandatory;
-          scroll-behavior: smooth;
+      .single-product {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid #222;
+        justify-content: space-evenly;
+        height: calc(100vh - 88px);
+        min-height: calc(100vh - 88px);
+      }
+
+      .single-product > div:first-child {
+        position: relative;
+        display: flex;
+      }
+
+      .product-img {
+        width: 100%;
+        height: 100%;
+        flex: 1;
+        max-height: 50vh;
+        object-fit: contain;
+        border-radius: 8px;
+      }
+
+      .product-content {
+        flex: 0 0 37vh;
+        display: flex;
+        flex-direction: column;
+        background: #000;
+        position: relative;
+      }
+
+      /* media Queries */
+      @media (max-height: 750px) {
+        .product-content {
+          flex: 0 0 39vh; 
+          height: 50vh; /* Strict reduced height */
+        }
+        .product-img {
+          max-height: 50vh; 
+        }
+        .single-product > div:first-child {
+          flex: 1;
+          min-height: 30vh;
+        }
+      }
+
+      /* fix css */
+      .side-icons {
+        position: absolute;
+        right: 1rem;
+        bottom: 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        i {
+          border: 1px solid #444;
+          padding: 0.6rem;
+          border-radius: 50%;
+          backdrop-filter: blur(5px);
+        }
+      }
+      .description {
+        text-align: center;
+        color: #ccc;
+        margin-top: 0.6rem;
+      }
+      .price-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.6rem;
+        background-color: #1a1a1a;
+        border-top: 1px solid #1a1a1a;
+        .old-price {
+          text-decoration: line-through;
+          color: red;
+        }
+        .quantity {
           display: flex;
-          flex-direction: column;
-          gap: 20px;
+          align-items: center;
+          gap: 0.6rem;
+          border: 1px solid #696464;
+          border-radius: 40px;
+          padding: 7px;
+        }
+        #decrement,
+        #increment {
+          background: #444;
+          color: white;
+          border: none;
+          padding: 0.3rem 0.6rem;
+          border-radius: 40px;
+        }
+      }
 
-          .single-product {
-            height: 100vh;
-            scroll-snap-align: center;
-            scroll-snap-stop: always;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
+      .related-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding: 0px 0.9rem;
+        justify-content: center;
 
-            /* Image container: Dynamic fill */
-            > div:first-child {
-              flex: 1;
-              min-height: 40vh;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              position: relative;
-            }
+        .related-products {
+          position: relative;
+          display: flex;
+          align-items: center;
+          gap: 0.7rem;
+          justify-content: flex-start;
+          margin: 0.5rem 0.9rem;
+          scroll-behavior: smooth;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
 
-            .product-img {
+          .related-item {
+            flex: 0 0 calc(25% - 0.6rem);
+            background-color: #000000;
+            border-radius: 0.6rem;
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #3a3a3a;
+            scroll-snap-align: start;
+
+            img {
               width: 100%;
-              flex: 1;
-              max-height: 50vh;
-              object-fit: contain;
-              border-radius: 8px;
-            }
-
-            .side-icons {
-              position: absolute;
-              right: 1rem;
-              bottom: 0px;
-              display: flex;
-              flex-direction: column;
-              gap: 0.6rem;
-              i {
-                border: 1px solid #444;
-                padding: 0.6rem;
-                border-radius: 50%;
-                backdrop-filter: blur(5px);
-              }
-            }
-
-            .product-content {
-              flex: 0 0 35vh;
-              height: 35vh;
-              flex-shrink: 0;
-              display: flex;
-              flex-direction: column;
-              background: #000;
-
-              .description {
-                text-align: center;
-                color: #ccc;
-                margin-top: 0.6rem;
-              }
-
-              .price-section {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0.6rem;
-                background-color: #1a1a1a;
-                border-top: 1px solid #1a1a1a;
-                .old-price {
-                  text-decoration: line-through;
-                  color: red;
-                }
-                .quantity {
-                  display: flex;
-                  align-items: center;
-                  gap: 0.6rem;
-                  border: 1px solid #696464;
-                  border-radius: 40px;
-                  padding: 7px;
-                }
-                #decrement,
-                #increment {
-                  background: #444;
-                  color: white;
-                  border: none;
-                  padding: 0.3rem 0.6rem;
-                  border-radius: 40px;
-                }
-              }
-
-              .related-wrapper {
-                position: relative;
-                display: flex;
-                align-items: center;
-                overflow: hidden;
-                padding: 0px 0.9rem;
-                justify-content: center;
-
-                .related-products {
-                  position: relative;
-                  display: flex;
-                  align-items: center;
-                  gap: 0.7rem;
-                  justify-content: flex-start;
-                  margin: 0.5rem 0.9rem;
-                  scroll-behavior: smooth;
-                  overflow-x: auto;
-                  scroll-snap-type: x mandatory;
-
-                  .related-item {
-                    flex: 0 0 calc(25% - 0.6rem);
-                    background-color: #000000;
-                    border-radius: 0.6rem;
-                    padding: 5px;
-                    text-align: center;
-                    border: 1px solid #3a3a3a;
-                    scroll-snap-align: start;
-
-                    img {
-                      width: 100%;
-                      height: 4rem;
-                      object-fit: cover;
-                      border-radius: 6px;
-                      margin-bottom: 6px;
-                    }
-                  }
-
-                  #leftArrow,
-                  #rightArrow {
-                    backdrop-filter: blur(5px);
-                    padding: 5px 8px;
-                    border-radius: 50%;
-                    cursor: pointer;
-                    z-index: 5;
-                    left: 0px;
-                  }
-                }
-                .related-products::-webkit-scrollbar {
-                  display: none;
-                }
-              }
-
-              .order-controls {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                background: #1a1a1a;
-                padding: 0.6rem;
-              }
+              height: 4rem;
+              object-fit: cover;
+              border-radius: 6px;
+              margin-bottom: 6px;
             }
           }
+
+          #leftArrow,
+          #rightArrow {
+            backdrop-filter: blur(5px);
+            padding: 5px 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 5;
+            left: 0px;
+          }
         }
+        .related-products::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      .order-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #1a1a1a;
+        padding: 0.6rem;
       }
     </style>
   </head>
   <body>
-    <!-- Header -->
     <header>
       <i class="fa-thin fa-arrow-left text"></i>
       <h2>Product-details</h2>
@@ -246,11 +261,11 @@
       </div>
     </header>
 
-    <!-- Product Image -->
-    <div class="container-product">
+    <main>
+      <!-- <div class="container-product"> -->
       <div class="container">
         <div class="single-product">
-          <div style="position: relative">
+          <div>
             <img
               src="product-list-img/img2.png"
               alt="Product"
@@ -327,7 +342,7 @@
         </div>
 
         <div class="single-product">
-          <div style="position: relative">
+          <div>
             <img
               src="product-list-img/img5.png"
               alt="Product"
@@ -400,7 +415,7 @@
         </div>
 
         <div class="single-product">
-          <div style="position: relative">
+          <div>
             <img
               src="product-list-img/img6.png"
               alt="Product"
@@ -477,7 +492,7 @@
         </div>
 
         <div class="single-product">
-          <div style="position: relative">
+          <div>
             <img
               src="product-list-img/img3.png"
               alt="Product"
@@ -553,9 +568,9 @@
           </div>
         </div>
       </div>
-    </div>
+      <!-- </div> -->
+    </main>
 
-    <!-- Bottom Navigation -->
     <footer>
       <i class="fa-thin fa-house"></i>
       <i class="fa-thin fa-shopping-cart"></i>
@@ -565,27 +580,75 @@
     </footer>
 
     <script>
+      // Function to analyze image background and adjust icons
+      function analyzeImagesAndIcons() {
+        const products = document.querySelectorAll(".single-product");
+        products.forEach((product) => {
+          const img = product.querySelector(".product-img");
+          if (img) {
+            const imageUrl = img.src;
+            const imgElement = new Image();
+            imgElement.crossOrigin = "Anonymous"; // Allow CORS for external images
+            imgElement.src = imageUrl;
+
+            imgElement.onload = () => {
+              const canvas = document.createElement("canvas");
+              const ctx = canvas.getContext("2d");
+              canvas.width = imgElement.width;
+              canvas.height = imgElement.height;
+              ctx.drawImage(imgElement, 0, 0);
+
+              // Sample pixels from the top-left corner (e.g., 10x10 area)
+              const imageData = ctx.getImageData(0, 0, 10, 10).data; // Top-left 10x10 pixels
+              let totalR = 0,
+                totalG = 0,
+                totalB = 0;
+              let pixelCount = 0;
+
+              for (let i = 0; i < imageData.length; i += 4) {
+                totalR += imageData[i]; // Red
+                totalG += imageData[i + 1]; // Green
+                totalB += imageData[i + 2]; // Blue
+                pixelCount++;
+              }
+
+              const avgR = totalR / pixelCount;
+              const avgG = totalG / pixelCount;
+              const avgB = totalB / pixelCount;
+
+              // Check if average color is near white (threshold: RGB > 240)
+              if (avgR > 200 && avgG > 200 && avgB > 200) {
+                // Background is white, change icon colors
+                const icons = product.querySelectorAll(".side-icons i");
+                icons.forEach((icon) => {
+                  icon.style.color = "#000"; // Change to black for contrast
+                });
+              }
+              // If not white, do nothing (icons keep their default color)
+            };
+          }
+        });
+      }
+
       // Quantity Controls
       function initQuantityControls() {
-        document
-          .querySelectorAll(".single-product, .desktop-single-product")
-          .forEach((container) => {
-            const dec = container.querySelector(".decrement");
-            const inc = container.querySelector(".increment");
-            const qty = container.querySelector(".quantity-value");
-            if (!dec || !inc || !qty) return;
-            let count = 0;
-            inc.addEventListener("click", () => {
-              count++;
-              qty.textContent = count;
-            });
-            dec.addEventListener("click", () => {
-              if (count > 0) {
-                count--;
-                qty.textContent = count;
-              }
-            });
+        document.querySelectorAll(".single-product").forEach((container) => {
+          const dec = container.querySelector("#decrement");
+          const inc = container.querySelector("#increment");
+          const qty = container.querySelector("#quantity");
+          if (!dec || !inc || !qty) return;
+          let count = 0;
+          inc.addEventListener("click", () => {
+            count++;
+            qty.textContent = count;
           });
+          dec.addEventListener("click", () => {
+            if (count > 0) {
+              count--;
+              qty.textContent = count;
+            }
+          });
+        });
       }
 
       // Sliders
@@ -614,7 +677,7 @@
       document.addEventListener("DOMContentLoaded", () => {
         initQuantityControls();
         initSliders();
-        setHeights();
+        analyzeImagesAndIcons(); // Run the new function
       });
     </script>
   </body>
