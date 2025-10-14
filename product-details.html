@@ -96,7 +96,18 @@
 
       @media (max-height: 800px) {
         .product-content {
-          height: 37%;
+          height: 34%;
+        }
+        .single-product > div:first-child {
+          height: 66%;
+        }
+      }
+      @media (max-height: 700px) {
+        .product-content {
+          height: 40%;
+        }
+        .single-product > div:first-child {
+          height: 60%;
         }
       }
 
@@ -153,6 +164,7 @@
       .related-wrapper {
         position: relative;
         display: flex;
+        flex:1;
         align-items: center;
         overflow: hidden;
         padding: 0px 0.9rem;
