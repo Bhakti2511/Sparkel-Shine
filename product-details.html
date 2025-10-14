@@ -816,56 +816,6 @@
     </footer>
 
     <script>
-      // Function to analyze image background and adjust icons
-      function analyzeImagesAndIcons() {
-        const products = document.querySelectorAll(".single-product");
-        products.forEach((product) => {
-          const img = product.querySelector(".product-img");
-          if (img) {
-            const imageUrl = img.src;
-            const imgElement = new Image();
-            imgElement.crossOrigin = "Anonymous"; // Allow CORS for external images
-            imgElement.src = imageUrl;
-
-            imgElement.onload = () => {
-              const canvas = document.createElement("canvas");
-              const ctx = canvas.getContext("2d");
-              canvas.width = imgElement.width;
-              canvas.height = imgElement.height;
-              ctx.drawImage(imgElement, 0, 0);
-
-              // Sample pixels from the top-left corner (e.g., 10x10 area)
-              const imageData = ctx.getImageData(0, 0, 10, 10).data; // Top-left 10x10 pixels
-              let totalR = 0,
-                totalG = 0,
-                totalB = 0;
-              let pixelCount = 0;
-
-              for (let i = 0; i < imageData.length; i += 4) {
-                totalR += imageData[i]; // Red
-                totalG += imageData[i + 1]; // Green
-                totalB += imageData[i + 2]; // Blue
-                pixelCount++;
-              }
-
-              const avgR = totalR / pixelCount;
-              const avgG = totalG / pixelCount;
-              const avgB = totalB / pixelCount;
-
-              // Check if average color is near white (threshold: RGB > 240)
-              if (avgR > 200 && avgG > 200 && avgB > 200) {
-                // Background is white, change icon colors
-                const icons = product.querySelectorAll(".side-icons i");
-                icons.forEach((icon) => {
-                  icon.style.color = "#000"; // Change to black for contrast
-                });
-              }
-              // If not white, do nothing (icons keep their default color)
-            };
-          }
-        });
-      }
-
       // Quantity Controls
       function initQuantityControls() {
         document.querySelectorAll(".single-product").forEach((container) => {
