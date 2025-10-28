@@ -716,7 +716,7 @@ main {
   display: flex;
   position: fixed;
   bottom: 40px;
-  width: 95%;
+  width: 100%;
   gap: 10px;
   background-color: #000000;
   padding: 10px 0px;
