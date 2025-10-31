@@ -430,8 +430,9 @@ main {
         padding: 10px;
         border-radius: 10px;
         font-size: 27px;
-        justify-self: anchor-center;
-        align-self: anchor-center;
+                top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
     }
   }
